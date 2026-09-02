@@ -12,14 +12,14 @@ export function Tools() {
       <div className="mx-auto max-w-6xl">
         <SectionIntro
           eyebrow="Tools & Technologies"
-          title="The stack behind the studio."
+          title="The stack I work with every day."
         />
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((group) => {
             const related =
-              group.id === "infra"
-                ? role === "web" || role === "frappe" || role === null
+              group.id === "systems"
+                ? true
                 : role === null || group.id === role;
 
             return (

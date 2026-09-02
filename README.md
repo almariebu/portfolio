@@ -1,6 +1,6 @@
-# Almarie Bu — Product Studio
+# Almarie Bu — Web Developer & ERP Developer
 
-Personal product studio portfolio. Interactive homepage with three paths — Product Owner, Web Developer, and Frappe Consultant — that reshape the page around each discipline.
+Personal portfolio for Frappe / ERPNext and web work. Live at [almariedev.com](https://almariedev.com/).
 
 ## Stack
 
@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Edit `src/lib/content.ts` for copy, projects, tools, and contact links.
 
-Role paths are shareable via query string, e.g. `/?path=product`.
+Role paths are shareable via query string, e.g. `/?path=frappe` or `/?path=web`.
 
 ## Deploy
 

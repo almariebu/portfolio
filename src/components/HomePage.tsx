@@ -22,7 +22,7 @@ function Studio() {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="studio-content">
+      <main id="main-content">
         <Hero />
         <WhatIDo />
         <Process />

@@ -5,7 +5,6 @@ import { SectionIntro } from "@/components/SectionIntro";
 import { useRole } from "@/components/RoleContext";
 
 const roleEmphasis: Record<string, number[]> = {
-  product: [0, 1, 3],
   web: [1, 2, 3],
   frappe: [0, 2, 4],
 };
@@ -15,35 +14,30 @@ export function Process() {
   const emphasis = role ? roleEmphasis[role] : null;
 
   return (
-    <section id="process" className="bg-surface-soft/50 px-5 py-20 sm:px-8 sm:py-28">
+    <section id="process" className="px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionIntro
-          eyebrow="Selected Work"
-          title="From Idea to Production"
-          description="I approach projects across the complete product lifecycle."
+          eyebrow="How I Work"
+          title="From requirement to a working system"
+          description="I take operational needs through build, launch, and ongoing maintenance."
         />
 
-        <ol className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <ol className="mt-14 divide-y divide-line border-y border-line">
           {processSteps.map((step, index) => {
-            const highlighted =
-              emphasis === null || emphasis.includes(index);
+            const highlighted = emphasis === null || emphasis.includes(index);
 
             return (
               <li
                 key={step.id}
-                className={`rounded-xl border border-line bg-surface p-5 transition duration-300 ${
+                className={`grid gap-3 py-6 transition duration-300 sm:grid-cols-[4rem_10rem_1fr] sm:items-baseline ${
                   highlighted ? "opacity-100" : "opacity-35"
                 }`}
               >
-                <span className="font-display text-sm font-semibold text-accent">
-                  {step.id}
-                </span>
-                <h3 className="mt-3 font-display text-lg font-semibold tracking-tight text-ink">
+                <span className="font-display text-sm text-accent">{step.id}</span>
+                <h3 className="font-display text-xl font-medium tracking-tight text-ink">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {step.description}
-                </p>
+                <p className="text-sm leading-relaxed text-muted">{step.description}</p>
               </li>
             );
           })}

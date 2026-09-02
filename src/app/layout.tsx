@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Source_Sans_3 } from "next/font/google";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -9,42 +9,45 @@ const sourceSans = Source_Sans_3({
   weight: ["400", "500", "600", "700"],
 });
 
-const sora = Sora({
-  variable: "--font-sora",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://almariebu.vercel.app"),
+  metadataBase: new URL("https://almariedev.com"),
   title: {
-    default: "Almarie Bu — Product Studio",
+    default: "Almarie Bu — Web Developer & ERP Developer",
     template: "%s · Almarie Bu",
   },
   description:
-    "I turn business problems into working digital products. Product ownership, web development, and Frappe ERP consulting.",
+    "Web Developer and ERP Developer specializing in Frappe Framework and ERPNext. I build, customize, maintain, and troubleshoot business applications.",
   applicationName: "Almarie Bu",
   authors: [{ name: "Almarie Bu" }],
   keywords: [
-    "Product Owner",
     "Web Developer",
+    "ERP Developer",
     "Frappe",
     "ERPNext",
-    "Product Studio",
+    "Python Developer",
+    "Full-Stack Developer",
   ],
   openGraph: {
-    title: "Almarie Bu — Product Studio",
+    title: "Almarie Bu — Web Developer & ERP Developer",
     description:
-      "I turn business problems into working digital products. Product ownership, web development, and Frappe ERP consulting.",
+      "Web Developer and ERP Developer specializing in Frappe Framework and ERPNext. I build, customize, maintain, and troubleshoot business applications.",
     type: "website",
     locale: "en_US",
     siteName: "Almarie Bu",
+    images: [{ url: "/almarie.jpg", alt: "Portrait of Almarie Bu" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Almarie Bu — Product Studio",
+    title: "Almarie Bu — Web Developer & ERP Developer",
     description:
-      "I turn business problems into working digital products.",
+      "Web Developer and ERP Developer specializing in Frappe Framework and ERPNext.",
+    images: ["/almarie.jpg"],
   },
   icons: {
     icon: "/favicon.svg",
@@ -52,7 +55,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f3f5f7",
+  themeColor: "#f3efe8",
   width: "device-width",
   initialScale: 1,
 };
@@ -61,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${sourceSans.variable} ${sora.variable} h-full antialiased`}
+      className={`${sourceSans.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         {children}
