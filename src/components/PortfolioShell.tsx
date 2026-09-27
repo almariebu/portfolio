@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { caseStudies, site } from "@/lib/content";
 import {
@@ -105,23 +106,29 @@ export function PortfolioShell({
   const [study, setStudy] = useState(resolvedStudy(initialStudy));
   const [part, setPart] = useState<WorkPart>(initialPart);
   const panelRef = useRef(panel);
-  panelRef.current = panel;
 
   useEffect(() => {
-    const fromHash = panelFromHash(window.location.hash);
-    if (fromHash) {
-      const next = desktopHomeToPractice(fromHash.panel);
-      setPanel(next);
-      if (fromHash.study) setStudy(resolvedStudy(fromHash.study));
-      writeUrl(
-        next,
-        next === "work" ? resolvedStudy(fromHash.study) : null,
-        "overview",
-        "replace",
-      );
-    }
+    panelRef.current = panel;
+  }, [panel]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 48rem)");
 
     const onPop = () => {
+      const fromHash = panelFromHash(window.location.hash);
+      if (fromHash) {
+        const next = desktopHomeToPractice(fromHash.panel);
+        setPanel(next);
+        if (fromHash.study) setStudy(resolvedStudy(fromHash.study));
+        writeUrl(
+          next,
+          next === "work" ? resolvedStudy(fromHash.study) : null,
+          "overview",
+          "replace",
+        );
+        return;
+      }
+
       const next = readUrl();
       const resolved = desktopHomeToPractice(next.panel);
       setPanel(resolved);
@@ -129,7 +136,6 @@ export function PortfolioShell({
       setPart(next.part);
     };
 
-    const desktop = window.matchMedia("(min-width: 48rem)");
     const onDesktop = () => {
       if (desktop.matches && panelRef.current === "home") {
         setPanel("practice");
@@ -139,7 +145,8 @@ export function PortfolioShell({
 
     window.addEventListener("popstate", onPop);
     desktop.addEventListener("change", onDesktop);
-    onDesktop();
+    if (window.location.hash) onPop();
+    else onDesktop();
     return () => {
       window.removeEventListener("popstate", onPop);
       desktop.removeEventListener("change", onDesktop);
@@ -216,7 +223,7 @@ export function PortfolioShell({
           onClick={() => selectPanel("home")}
           className="flex min-w-0 items-center gap-2.5 text-left"
         >
-          <img
+          <Image
             src={site.photo}
             alt=""
             width={36}
@@ -224,7 +231,7 @@ export function PortfolioShell({
             className="size-9 shrink-0 rounded-full object-cover object-[center_18%]"
           />
           <span className="min-w-0">
-            <h1 className="truncate font-display text-xs font-semibold tracking-[0.14em] text-ink uppercase">
+            <h1 className="font-display text-sm font-semibold leading-tight text-ink">
               {site.name}
             </h1>
             <span className="block truncate text-[0.7rem] text-ink-muted">
@@ -297,9 +304,9 @@ export function PortfolioShell({
           role="tabpanel"
           aria-labelledby={`tab-${shown}`}
           tabIndex={0}
-          className="stage-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 outline-none sm:p-5 md:overflow-hidden md:p-6"
+          className="stage-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 outline-none sm:p-5 md:p-6"
         >
-          <div key={shown} className="panel-in h-full min-h-full md:min-h-0">
+          <div key={shown} className="panel-in min-h-full">
             {shown === "home" ? (
               <HomePanel
                 onWork={() => selectPanel("work")}

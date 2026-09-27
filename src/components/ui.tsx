@@ -38,7 +38,7 @@ export function Eyebrow({
 }) {
   return (
     <p
-      className={`text-[0.7rem] font-semibold tracking-[0.2em] uppercase ${
+      className={`text-xs font-semibold tracking-[0.16em] uppercase ${
         tone === "dark" ? "text-gold" : "text-gold-deep"
       }`}
     >
@@ -92,7 +92,7 @@ export function Tag({
     <span
       className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
         tone === "dark"
-          ? "bg-night-raised text-night-muted"
+          ? "bg-night-raised text-night-ink"
           : "border border-paper-line bg-paper-soft text-ink-muted"
       }`}
     >
@@ -117,7 +117,7 @@ export function PanelHeading({
         {title}
       </h2>
       {description ? (
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-night-muted">
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-night-ink">
           {description}
         </p>
       ) : null}

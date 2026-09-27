@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { caseStudies, screenshotNote, type CaseStudy } from "@/lib/content";
-import { workHref } from "@/lib/navigation";
-import { PanelHeading } from "@/components/ui";
 
 export function WorkPanel({
   slug,
@@ -12,114 +10,137 @@ export function WorkPanel({
   slug: string;
   onSlug: (slug: string) => void;
 }) {
-  const study = caseStudies.find((item) => item.slug === slug) ?? caseStudies[0];
-
-  function selectStudy(event: React.MouseEvent<HTMLAnchorElement>, next: string) {
-    if (
-      event.metaKey ||
-      event.ctrlKey ||
-      event.shiftKey ||
-      event.altKey ||
-      event.button !== 0
-    ) {
-      return;
-    }
-    event.preventDefault();
-    onSlug(next);
-  }
+  const featured = caseStudies.filter((study) => study.featured);
+  const more = caseStudies.filter((study) => !study.featured);
 
   return (
-    <div className="flex min-h-full flex-col gap-4 md:h-full md:min-h-0 md:overflow-hidden">
-      <PanelHeading
-        eyebrow="Work"
-        title="Livro Systems, Inc."
-        description="School system from 2020 to now: admission, enrollment, billing, and grading. ERP Livro is the internal employee process."
-      />
+    <div className="flex flex-col gap-8">
+      <div className="max-w-3xl">
+        <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Work</p>
+        <h2 className="mt-2 font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
+          Selected work
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-night-ink">
+          Three projects from the school system. More of the work is below.
+        </p>
+      </div>
 
-      <div className="grid gap-3 md:min-h-0 md:flex-1 md:grid-cols-[minmax(0,14.5rem)_minmax(0,1fr)] md:overflow-hidden">
-        <ul className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] md:min-h-0 md:flex-col md:overflow-y-auto md:pb-0 [&::-webkit-scrollbar]:hidden">
-          {caseStudies.map((item) => {
-            const selected = item.slug === study.slug;
-            return (
-              <li key={item.slug} className="shrink-0 md:shrink">
-                <a
-                  href={workHref(item.slug, "overview")}
-                  aria-current={selected ? "true" : undefined}
-                  onClick={(event) => selectStudy(event, item.slug)}
-                  className={`block w-52 rounded-xl border px-3 py-2.5 transition md:w-full ${
-                    selected
-                      ? "border-gold/50 bg-night-raised"
-                      : "border-night-line bg-night-soft hover:border-gold/30"
-                  }`}
-                >
-                  <span className="text-[0.62rem] font-semibold tracking-[0.14em] text-gold uppercase">
-                    {item.category}
-                  </span>
-                  <span className="mt-1.5 block font-display text-sm font-semibold leading-snug text-night-ink">
-                    {item.title}
-                  </span>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="flex flex-col gap-5">
+        {featured.map((study) => (
+          <StudyArticle key={study.slug} study={study} />
+        ))}
+      </div>
 
-        <StudyDetail study={study} />
+      <div>
+        <h3 className="font-display text-lg font-semibold text-night-ink">More work</h3>
+        <div className="mt-3 flex flex-col gap-2">
+          {more.map((study) => (
+            <details
+              key={study.slug}
+              open={study.slug === slug}
+              className="rounded-2xl border border-night-line bg-night-soft"
+            >
+              <summary
+                className="cursor-pointer list-none px-4 py-3 sm:px-5 [&::-webkit-details-marker]:hidden"
+                onClick={(event) => {
+                  event.preventDefault();
+                  onSlug(study.slug === slug ? featured[0].slug : study.slug);
+                }}
+              >
+                <span className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">
+                  {study.category}
+                </span>
+                <span className="mt-1 block font-display text-base font-semibold text-night-ink">
+                  {study.title}
+                </span>
+                <span className="mt-1 block text-sm leading-relaxed text-night-muted">
+                  {study.summary}
+                </span>
+                <span className="mt-2 block text-sm font-semibold text-gold">
+                  {study.slug === slug ? "Hide" : "Show"}
+                </span>
+              </summary>
+              <div className="border-t border-night-line px-4 py-4 sm:px-5">
+                <StudyBody study={study} />
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
-function StudyDetail({ study }: { study: CaseStudy }) {
+function StudyArticle({ study }: { study: CaseStudy }) {
   return (
-    <article className="flex flex-col rounded-2xl border border-night-line bg-night-soft md:min-h-0 md:overflow-hidden">
-      {study.image ? (
-        <figure className="shrink-0 border-b border-night-line">
-          <Image
-            src={study.image}
-            alt={study.imageAlt ?? study.title}
-            width={1400}
-            height={900}
-            className="h-36 w-full object-cover object-left-top sm:h-40"
-          />
-          <figcaption className="px-4 py-2 text-[0.7rem] leading-snug text-night-muted sm:px-5">
-            {screenshotNote}
-          </figcaption>
-        </figure>
-      ) : null}
-      <div className="pane-scroll space-y-4 px-4 py-4 sm:px-5 sm:py-5 md:min-h-0 md:flex-1 md:overflow-y-auto">
-        <h3 className="font-display text-xl font-semibold leading-snug tracking-tight text-night-ink">
-          {study.title}
-        </h3>
-        <p className="text-sm leading-relaxed text-night-muted">{study.summary}</p>
+    <article className="rounded-2xl border border-night-line bg-night-soft">
+      {study.image ? <StudyImage study={study} /> : null}
+      <div className="space-y-4 px-4 py-4 sm:px-5 sm:py-5">
         <div>
-          <h4 className="text-[0.68rem] font-semibold tracking-[0.16em] text-gold uppercase">
-            What I did
-          </h4>
-          <ul className="mt-2 space-y-2">
-            {study.did.map((item) => (
-              <li key={item} className="flex gap-3 text-sm leading-relaxed text-night-muted">
-                <span
-                  aria-hidden="true"
-                  className="mt-2 size-1.5 shrink-0 rounded-full bg-gold"
-                />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <p className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">
+            {study.category}
+          </p>
+          <h3 className="mt-1 font-display text-xl font-semibold leading-snug tracking-tight text-night-ink">
+            {study.title}
+          </h3>
         </div>
-        <p className="text-sm leading-relaxed text-night-ink">{study.outcome}</p>
-        <ul className="flex flex-wrap gap-1.5">
-          {study.stack.map((tech) => (
-            <li
-              key={tech}
-              className="rounded-full border border-night-line px-2.5 py-1 text-[0.72rem] text-night-muted"
-            >
-              {tech}
+        <StudyBody study={study} />
+      </div>
+    </article>
+  );
+}
+
+function StudyImage({ study }: { study: CaseStudy }) {
+  return (
+    <figure className="border-b border-night-line">
+      <Image
+        src={study.image!}
+        alt={study.imageAlt ?? study.title}
+        width={1400}
+        height={900}
+        className="h-44 w-full object-cover object-left-top sm:h-52"
+      />
+      <figcaption className="px-4 py-2 text-sm leading-snug text-night-muted sm:px-5">
+        {screenshotNote}
+      </figcaption>
+    </figure>
+  );
+}
+
+function StudyBody({ study }: { study: CaseStudy }) {
+  return (
+    <div className="space-y-4">
+      <section>
+        <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Problem</h4>
+        <p className="mt-2 text-sm leading-relaxed text-night-ink">{study.problem}</p>
+      </section>
+      <section>
+        <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">
+          What I did
+        </h4>
+        <ul className="mt-2 space-y-2">
+          {study.responsibility.map((item) => (
+            <li key={item} className="flex gap-3 text-sm leading-relaxed text-night-ink">
+              <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-gold" />
+              <span>{item}</span>
             </li>
           ))}
         </ul>
-      </div>
-    </article>
+      </section>
+      <section>
+        <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Result</h4>
+        <p className="mt-2 text-sm leading-relaxed text-night-ink">{study.improvement}</p>
+      </section>
+      <ul className="flex flex-wrap gap-1.5">
+        {study.stack.map((tech) => (
+          <li
+            key={tech}
+            className="rounded-full border border-night-line px-3 py-1 text-sm text-night-ink"
+          >
+            {tech}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

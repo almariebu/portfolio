@@ -5,7 +5,7 @@ import { contact, site } from "@/lib/content";
 import { Eyebrow } from "@/components/ui";
 
 const fieldClass =
-  "mt-1.5 w-full rounded-lg border border-night-line bg-night px-3.5 py-2.5 text-sm text-night-ink placeholder:text-night-muted/50 focus:border-gold focus:outline-none";
+  "mt-1.5 w-full rounded-lg border border-night-line bg-night px-3.5 py-2.5 text-sm text-night-ink placeholder:text-night-muted focus:border-gold focus:outline-none";
 
 export function ContactPanel() {
   const [type, setType] = useState(contact.projectTypes[0]);
@@ -25,13 +25,13 @@ export function ContactPanel() {
   }
 
   return (
-    <div className="grid min-h-full gap-5 md:h-full md:min-h-0 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:overflow-hidden">
-      <div className="pane-scroll md:min-h-0 md:overflow-y-auto md:pr-2">
+    <div className="grid gap-5 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+      <div className="md:pr-2">
         <Eyebrow>{contact.eyebrow}</Eyebrow>
         <h2 className="mt-2 max-w-md font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
           {contact.title}
         </h2>
-        <p className="mt-3 max-w-md text-sm leading-relaxed text-night-muted">
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-night-ink">
           {contact.lead}
         </p>
         <a
@@ -63,7 +63,7 @@ export function ContactPanel() {
 
       <form
         onSubmit={handleSubmit}
-        className="pane-scroll rounded-2xl border border-night-line bg-night-soft p-4 sm:p-5 md:min-h-0 md:overflow-y-auto"
+        className="rounded-2xl border border-night-line bg-night-soft p-4 sm:p-5"
       >
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
@@ -107,10 +107,10 @@ export function ContactPanel() {
                 type="button"
                 onClick={() => setType(option)}
                 aria-pressed={type === option}
-                className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                className={`rounded-full border px-3 py-1.5 text-sm font-medium transition ${
                   type === option
-                    ? "border-gold bg-gold/12 text-gold"
-                    : "border-night-line text-night-muted hover:border-gold/40"
+                    ? "border-gold bg-gold/12 text-gold-bright"
+                    : "border-night-line text-night-ink hover:border-gold/40"
                 }`}
               >
                 {option}
@@ -137,10 +137,10 @@ export function ContactPanel() {
           type="submit"
           className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-gold px-5 text-sm font-bold text-night transition hover:bg-gold-bright"
         >
-          Send message
+          Open email draft
         </button>
-        <p className="mt-2 text-center text-xs text-night-muted/70">
-          Opens in your email app so you keep a copy.
+        <p className="mt-2 text-center text-sm text-night-muted">
+          Opens an email draft. You can also use the address on this page.
         </p>
       </form>
     </div>
