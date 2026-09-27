@@ -1,56 +1,166 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3f5f7;
-  --foreground: #1a2332;
-  --muted: #5c6b7a;
-  --surface: #ffffff;
-  --surface-soft: #e9eef3;
-  --line: #d5dde6;
-  --ink: #1a2332;
-  --accent: #2c5f8a;
-  --accent-soft: #e7f0f6;
-  --accent-hover: #234d70;
+  /* Light surfaces — hero and About read on warm paper */
+  --paper: #f8f7f4;
+  --paper-soft: #efece5;
+  --paper-line: #e2ded4;
+  --ink: #131a1a;
+  --ink-muted: #4f5b5a;
+
+  /* Dark surfaces — the body of the site */
+  --night: #0d1413;
+  --night-soft: #161f1e;
+  --night-raised: #1d2726;
+  --night-line: #26312f;
+  --night-ink: #e9ebe7;
+  --night-muted: #97a4a1;
+
+  /* Warm gold accent. `gold` reads on dark, `gold-deep` on paper. */
+  --gold: #c9a86b;
+  --gold-bright: #dcbf85;
+  --gold-deep: #8a6a2f;
+  --gold-soft: #f2ead9;
+  --gold-line: #d8c8a4;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-surface: var(--surface);
-  --color-surface-soft: var(--surface-soft);
-  --color-line: var(--line);
+
+  --color-paper: var(--paper);
+  --color-paper-soft: var(--paper-soft);
+  --color-paper-line: var(--paper-line);
   --color-ink: var(--ink);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-accent-hover: var(--accent-hover);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-night: var(--night);
+  --color-night-soft: var(--night-soft);
+  --color-night-raised: var(--night-raised);
+  --color-night-line: var(--night-line);
+  --color-night-ink: var(--night-ink);
+  --color-night-muted: var(--night-muted);
+
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-line: var(--gold-line);
+
   --font-sans: var(--font-source);
   --font-display: var(--font-sora);
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--night);
 }
 
 body {
-  background: var(--background);
+  /* Lock the document to the viewport so the page itself never scrolls. */
+  position: fixed;
+  inset: 0;
+  width: 100%;
   color: var(--foreground);
   font-family: var(--font-source), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* One viewport: identity on the left, the open tab on the right. */
+.portfolio-frame {
+  display: grid;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--night);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "header"
+    "main";
+}
+
+.area-header {
+  grid-area: header;
+}
+.area-rail {
+  grid-area: rail;
+}
+.area-main {
+  grid-area: main;
+}
+
+.area-header,
+.area-rail,
+.area-main {
+  min-width: 0;
+  min-height: 0;
+}
+
+@media (min-width: 48rem) {
+  .portfolio-frame {
+    grid-template-columns: minmax(280px, 400px) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: "rail main";
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #080c0b;
+  }
+
+  .area-rail,
+  .area-main {
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+}
+
+.stage-scroll,
+.rail-scroll,
+.pane-scroll {
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.stage-scroll,
+.pane-scroll {
+  scrollbar-color: var(--night-line) transparent;
+}
+
+.rail-scroll {
+  scrollbar-color: var(--gold-line) transparent;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent) 22%, white);
+  background: var(--gold);
   color: var(--ink);
 }
 
 :focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .font-display {
   font-family: var(--font-sora), sans-serif;
+}
+
+/* The seam between the light hero and the dark body. */
+.paper-to-night {
+  background: linear-gradient(
+    180deg,
+    var(--paper) 0%,
+    #e8e6df 38%,
+    #6f7674 72%,
+    var(--night) 100%
+  );
 }
 
 .sr-only {
@@ -66,11 +176,9 @@ body {
 }
 
 .focus\:not-sr-only:focus {
-  position: absolute;
+  position: static;
   width: auto;
   height: auto;
-  padding: inherit;
-  margin: inherit;
   overflow: visible;
   clip: auto;
   white-space: normal;
@@ -87,10 +195,26 @@ body {
   }
 }
 
-@keyframes fade-swap {
+.animate-rise {
+  animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-rise-1 {
+  animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+
+.animate-rise-2 {
+  animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+}
+
+.animate-rise-3 {
+  animation: rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+@keyframes panel-in {
   from {
     opacity: 0;
-    transform: translateY(0.35rem);
+    transform: translateY(0.4rem);
   }
   to {
     opacity: 1;
@@ -98,31 +222,16 @@ body {
   }
 }
 
-.animate-rise {
-  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.animate-rise-delay {
-  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
-}
-
-.animate-rise-delay-2 {
-  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
-}
-
-.animate-fade {
-  animation: fade-swap 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+.panel-in {
+  animation: panel-in 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   .animate-rise,
-  .animate-rise-delay,
-  .animate-rise-delay-2,
-  .animate-fade {
+  .animate-rise-1,
+  .animate-rise-2,
+  .animate-rise-3,
+  .panel-in {
     animation: none;
   }
 }
