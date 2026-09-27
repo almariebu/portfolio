@@ -1,392 +1,313 @@
-export type RoleId = "web" | "frappe";
-
-export const roles: RoleId[] = ["web", "frappe"];
+/**
+ * Site copy. Written from the earlier portfolio (photo, contact, and the
+ * school-ERP work) plus the current plan: one employer, no side clients,
+ * freelance or contract only.
+ */
+export type Pending<T> = T | null;
 
 export const site = {
   name: "Almarie Bu",
-  tagline:
-    "Web Developer and ERP Developer specializing in Frappe Framework and ERPNext.",
+  initials: "AB",
+  photo: "/almarie.jpg",
+  roles: ["Web Developer", "ERPNext Developer"],
+  headlineLead: "Web developer.",
+  headlineAccent: "ERPNext developer.",
+  company: "Livro Systems, Inc.",
+  formerCompany: "Wela School Systems",
   intro:
-    "I build, customize, maintain, and troubleshoot business applications based on real operational requirements.",
-  body: "I work with business and operations teams, then turn those requirements into practical technical solutions.",
+    "Full-time web developer at Livro Systems, Inc. since March 2020. It was Wela School Systems before the rename. I am in Product Development, on the school system and ERP Livro. New work is contract and freelance only. I can take more than one of those, on flexi time or a night shift in Philippine time. I’m starting to build my own project.",
+  availability: "Full-time at Livro · open to contract and freelance",
   email: "almariebullo@gmail.com",
   linkedin: "https://www.linkedin.com/in/almarie-alim-bullo/",
-  github: "https://github.com/almariebu",
-  photo: "/almarie.jpg",
+  github: "https://github.com/almarieeebu",
+  resume: null as Pending<string>,
+  url: "https://almariebu.vercel.app",
 };
 
-export const roleMeta: Record<
-  RoleId,
-  {
-    path: string;
-    label: string;
-    title: string;
-    short: string;
-    accent: string;
-    summary: string;
-  }
-> = {
-  web: {
-    path: "WEB",
-    label: "Web Developer",
-    title: "Web Developer",
-    short: "Web Development",
-    accent: "Applications that ship",
-    summary:
-      "I build practical web applications around real business workflows.",
-  },
-  frappe: {
-    path: "ERP",
-    label: "ERP Developer",
-    title: "Frappe / ERPNext Developer",
-    short: "Frappe / ERPNext",
-    accent: "Systems that fit",
-    summary:
-      "I customize, maintain, and troubleshoot ERPNext around how operations actually run.",
-  },
-};
-
-export const disciplines: Record<
-  RoleId,
-  {
-    title: string;
-    description: string;
-    focus: string[];
-  }
-> = {
-  web: {
-    title: "Web Development",
-    description:
-      "I build and maintain web applications, APIs, and the interfaces teams use every day.",
-    focus: [
-      "Web application development",
-      "HTML / CSS / JavaScript",
-      "REST APIs and integrations",
-      "Backend and frontend work",
-      "Bug fixing and maintenance",
-    ],
-  },
-  frappe: {
-    title: "Frappe / ERPNext",
-    description:
-      "I customize ERPNext and the Frappe Framework to match operational requirements — not the other way around.",
-    focus: [
-      "ERPNext customization",
-      "Custom DocTypes and business logic",
-      "Client Scripts and Server Scripts",
-      "Custom reports and dashboards",
-      "Workflow and permission configuration",
-      "Business process automation",
-      "Database queries and troubleshooting",
-    ],
-  },
-};
-
-export const processSteps = [
-  {
-    id: "01",
-    title: "Understand",
-    description:
-      "Learn the operational problem, the people doing the work, and the current workflow.",
-  },
-  {
-    id: "02",
-    title: "Define",
-    description:
-      "Turn requirements into DocTypes, workflows, permissions, or application scope.",
-  },
-  {
-    id: "03",
-    title: "Build",
-    description:
-      "Customize ERPNext or develop the web application against the agreed requirements.",
-  },
-  {
-    id: "04",
-    title: "Launch",
-    description:
-      "Test, deploy, and check permissions so the system is ready for real use.",
-  },
-  {
-    id: "05",
-    title: "Maintain",
-    description:
-      "Fix bugs, write queries, and keep improving the system after it is live.",
-  },
+export const snapshot = [
+  { value: "Since 2020", label: "Experience" },
+  { value: "Full-time", label: "Livro Systems" },
+  { value: "Contract / freelance", label: "New work" },
 ];
 
-export type Project = {
-  id: string;
-  role: RoleId;
-  category: string;
+export const screenshotNote =
+  "This screenshot is not the actual system. It is for visualization only.";
+
+export type DisciplineId = "web" | "erp";
+
+export const disciplines: {
+  id: DisciplineId;
+  label: string;
   title: string;
   description: string;
-  tags: string[];
-  image: string;
-  imageAlt: string;
-  liveUrl?: string;
-  problem: string;
-  roleDetail: string;
-  solution: string[];
-  result: string;
-  technical: string[];
+  capabilities: string[];
+}[] = [
+  {
+    id: "web",
+    label: "Web development",
+    title: "Screens, APIs, and fixes",
+    description:
+      "I build the pages and APIs people use, then I fix them when something breaks in real use.",
+    capabilities: [
+      "JavaScript",
+      "HTML / CSS",
+      "Next.js",
+      "REST APIs",
+      "Bug fixes",
+    ],
+  },
+  {
+    id: "erp",
+    label: "ERPNext development",
+    title: "Frappe and ERPNext",
+    description:
+      "I customize ERPNext for the school system and for ERP Livro: forms, scripts, workflows, reports, and permissions.",
+    capabilities: [
+      "DocTypes",
+      "Python",
+      "Client and Server Scripts",
+      "Reports",
+      "Workflows",
+      "Permissions",
+    ],
+  },
+];
+
+export type CaseStudy = {
+  slug: string;
+  title: string;
+  category: string;
+  summary: string;
+  did: string[];
+  outcome: string;
+  stack: string[];
+  image?: string;
+  imageAlt?: string;
 };
 
-export const projects: Project[] = [
+export const caseStudies: CaseStudy[] = [
   {
-    id: "college-enrollment",
-    role: "frappe",
-    category: "Confidential — education ERP",
-    title: "College enrollment and matriculation",
-    description:
-      "Built the college enrollment path on Frappe: Applicant, Matriculation, and Enrollees. Workflows run Draft through Dean, Registrar, and Finance. I added initial-payment checks, unit limits, term fee strategies, Client Scripts, and a hotfix so an existing enrollee is not reverted.",
-    tags: ["Frappe", "Python", "JavaScript", "Workflows", "MariaDB"],
+    slug: "college-enrollment",
+    title: "College admission and enrollment",
+    category: "Enrollment",
+    summary:
+      "Part of the school management system at Livro Systems. College enrollment was split across applicant, subjects, fees, and approvals. I built the forms and the path so a student can move from application to a locked enrollment.",
+    did: [
+      "Applicant, matriculation, and enrollee forms.",
+      "Sectioning, including a fix so the class time can change after submit.",
+      "Student applicant errors that were landing on the enrollee.",
+      "Workflow from Draft through Dean, Registrar, and Finance.",
+      "A payment check before finance can lock the record.",
+      "Unit limits and term fee rules on the matriculation form.",
+      "A fix so an existing enrollee is not reset when enrollment runs again.",
+    ],
+    outcome:
+      "Enrollment stays in the system. Payment and approvals are checked on the form, not in email.",
+    stack: ["Frappe", "Python", "JavaScript", "MariaDB"],
     image: "/work/college.png",
-    imageAlt: "College matriculation form with workflow and subject list",
-    problem:
-      "College enrollment was not one reliable path. Applicant, subjects, fees, approvals, and the enrollee record could fail independently — finance could approve without payment, unit limits were easy to miss, and an existing enrollee could have its status reverted.",
-    roleDetail:
-      "I owned the college registration DocTypes and Client Scripts: Applicant, Matriculation, and Enrollees. That included workflow states, payment and unit validation, term fee strategies, and production hotfixes.",
-    solution: [
-      "Workflow from Draft through Dean, Registrar, and Finance to Approved (Locked).",
-      "Initial-payment checks before finance can lock the record.",
-      "Unit limits and subject approval on the matriculation form.",
-      "Term fee strategies: gross split, net split, upfront downpayment, percentage, front-loaded, and custom amounts.",
-      "Hotfix so an existing college enrollee is not reverted when enrollment runs again.",
-    ],
-    result:
-      "A student can move from application to a locked enrollment with payment and approvals enforced in the DocType, not in email or chat.",
-    technical: [
-      "DocTypes: College Applicant, College Matriculation, College Enrollees.",
-      "Server logic in college_matriculation.py / service / repository; Client Script for registrar and finance actions.",
-      "term_calculation_strategy.py for school-specific term fee rules.",
-      "Frappe Workflow fixture for Dean → Registrar → Finance → Locked.",
-      "Enrollment Count report for operations.",
-    ],
+    imageAlt: "College matriculation form with an approval workflow",
   },
   {
-    id: "account-closing",
-    role: "frappe",
-    category: "Confidential — education ERP",
+    slug: "account-closing",
     title: "Account closing and cashiering",
-    description:
-      "Made term closing and cashiering reliable in production. I worked on Account Closing, ledger generation, Tellering, Student Overpayment, and penalty due dates — including queued jobs, clearer errors, and the fix for closings that would not create.",
-    tags: ["Frappe", "Python", "JavaScript", "SQL", "MariaDB"],
+    category: "Billing",
+    summary:
+      "Billing on the school system. Term closing and cashier payments were failing in production. I worked on account closing, tellering, and overpayments so cashiers could finish the work.",
+    did: [
+      "Account closing that creates student ledgers in the background.",
+      "A clearer error when a closing cannot start.",
+      "Tellering updates for downpayment and reconciliation.",
+      "Student overpayment, so extra payment stays on the ledger.",
+      "Penalty due dates that include the same day.",
+    ],
+    outcome:
+      "Cashiers can close accounts and post payments without the error that was blocking them.",
+    stack: ["Frappe", "Python", "JavaScript", "SQL"],
     image: "/work/closing.png",
-    imageAlt: "Account closing and tellering interface",
-    problem:
-      "Finance could not reliably close a term. Ledger generation failed, leftover records blocked a new closing, tellering and overpayments drifted from the student ledger, and cashiers saw an error instead of a created closing.",
-    roleDetail:
-      "I worked on Account Closing and Generate Account Closing, Tellering, Student Overpayment, and penalty due-date logic — both the Python services and the Client Scripts cashiers use.",
-    solution: [
-      "Generate Account Closing creates ledgers, removes related leftovers, and queues work instead of blocking the desk.",
-      "Clearer errors when a closing document is missing before enqueue.",
-      "Tellering updates for downpayment ledger, reconciliation, and transaction order.",
-      "Student Overpayment DocType and flow so excess payments stay on the ledger.",
-      "Penalty due dates include today so same-day dues are not skipped.",
-    ],
-    result:
-      "Cashiers can close accounts and post payments without the “unable to create account closing” failure that was hitting production.",
-    technical: [
-      "DocTypes: Account Closing, Generate Account Closing, Tellering, Student Overpayment.",
-      "Service / repository / API split; frappe.enqueue for ledger creation.",
-      "Student ledger JSON fields for transaction_order and is_reconciled.",
-      "Penalty task updates in school_penalty.",
-    ],
+    imageAlt: "Account closing form with a tellering table",
   },
   {
-    id: "discount-reporting",
-    role: "frappe",
-    category: "Confidential — education ERP",
-    title: "Student discounts and reporting",
-    description:
-      "Discounts were applied in matriculation, batch adjustments, and the ledger with no single view. I added discount calculation strategies, direct discount on batch ledger adjustment, and a Student Discount Summary report so finance can see what was allocated.",
-    tags: ["Frappe", "Python", "SQL", "Script Reports"],
+    slug: "student-discounts",
+    title: "Student discounts",
+    category: "Billing",
+    summary:
+      "Billing on the school system. Discounts were entered in a few places, and finance had no single view. I added batch discounts and a summary report.",
+    did: [
+      "Discount calculated from the total assessment or from what is left to pay.",
+      "A batch discount so finance does not rebuild the numbers in a spreadsheet.",
+      "Student Discount Summary, with filters for school year, semester, and discount type.",
+    ],
+    outcome:
+      "Finance can see who received a discount and apply a batch from one place.",
+    stack: ["Frappe", "Python", "SQL", "Script Report"],
     image: "/work/discounts.png",
-    imageAlt: "Student discount summary report table",
-    problem:
-      "Discounts were entered in matriculation, batch ledger adjustment, and the student ledger. Finance could not see who received what, or apply a batch discount without breaking remaining balances.",
-    roleDetail:
-      "I implemented the discount calculation strategies, direct discount on Batch Ledger Adjustment, and the Student Discount Summary Script Report (repository, service, filters).",
-    solution: [
-      "Discount strategies by total assessment and by remaining balance.",
-      "Direct discount on Batch Ledger Adjustment so finance can apply a batch without a spreadsheet.",
-      "Student Discount Summary report with school year, semester, student, and discount-type filters.",
-      "College revenue report sort fix so null keys do not break the list.",
-    ],
-    result:
-      "Finance can run one report for allocated discounts and apply batch discounts without rebuilding the numbers by hand.",
-    technical: [
-      "Script Report: Student Discount Summary (repository + service).",
-      "utils/discount.py and discount_strategy.py.",
-      "Batch Ledger Adjustment on_submit for discount-type entries.",
-      "Reads College Matriculation discount_table, adjustments, and Student Ledger allocations.",
-    ],
+    imageAlt: "Student discount summary report",
   },
   {
-    id: "basic-ed-enrollment",
-    role: "frappe",
-    category: "Confidential — education ERP",
-    title: "Basic education enrollment and withdrawals",
-    description:
-      "Kept basic-education enrollment accurate in production: incoming level for continuing students, withdraw-enrollment, duplicate enrollee fixes, class-list full names, and Teaching Staff permission checks so teachers only get the classes they should see.",
-    tags: ["Frappe", "Python", "JavaScript", "Permissions", "MariaDB"],
+    slug: "basic-ed-enrollment",
+    title: "Basic education enrollment",
+    category: "Enrollment",
+    summary:
+      "Enrollment on the school system. Basic-education records drifted after go-live: wrong incoming level, duplicate enrollees, withdrawals that left leftovers, and class lists with old names.",
+    did: [
+      "Incoming level stays for new students and moves up for continuing students.",
+      "A withdraw flow that cleans related records.",
+      "A check that blocks a duplicate enrollee on save.",
+      "Class list uses the student’s current name.",
+      "Teachers only receive the classes they should see.",
+      "Leftover grades are removed when a senior-high student withdraws.",
+    ],
+    outcome:
+      "Registrars can enroll, continue, and withdraw a student without duplicate rows.",
+    stack: ["Frappe", "Python", "JavaScript", "Permissions"],
     image: "/work/bed.png",
-    imageAlt: "Enrollees form with class list and withdraw action",
-    problem:
-      "Basic-education records drifted in production: continuing students kept the wrong incoming level, withdrawals left leftover grades or duplicates, class lists showed stale names, and teachers could receive permissions they should not have.",
-    roleDetail:
-      "I fixed and extended Enrollees, withdrawal APIs, class-list names, subject user permissions, and Teaching Staff role checks on the basic-education Frappe app.",
-    solution: [
-      "Incoming level stays for New students and increments for Continuing.",
-      "Withdraw-enrollment flow that cleans related records instead of leaving orphans.",
-      "Duplicate enrollee guard on save.",
-      "Class list uses the current full name from the student record.",
-      "Teaching Staff role check before assigning class and section permissions.",
-      "Async deletion of master grades for senior-high withdrawals.",
-    ],
-    result:
-      "Registrars can enroll, continue, and withdraw students without duplicate rows or teachers seeing the wrong class list.",
-    technical: [
-      "Enrollees DocType and enrollees_api.py withdrawal methods.",
-      "Client Script actions for withdraw and class-list refresh.",
-      "User Permission updates gated on Teaching Staff.",
-      "Queued job for senior-high master grade cleanup.",
-    ],
+    imageAlt: "Enrollees form used for basic education",
   },
   {
-    id: "roles-migration",
-    role: "frappe",
-    category: "Confidential — education ERP",
-    title: "Roles, data migration, and file recovery",
-    description:
-      "On shared Frappe utilities I added role-profile sync for default users, school-fee mapping during data migration, and a file-pull step after SQL File-list copies so attachments are not left behind as empty metadata.",
-    tags: ["Frappe", "Python", "SQL", "Roles", "Linux"],
+    slug: "roles-and-migration",
+    title: "Roles and data migration",
+    category: "School system",
+    summary:
+      "School system upkeep. After a version move, users had the wrong roles, school fees did not map, and some file records had no file on disk.",
+    did: [
+      "Default users created with the right role profiles.",
+      "School-fee mapping in the migration script.",
+      "A step that copies missing files after the file list is imported, without overwriting files already there.",
+    ],
+    outcome:
+      "A migrated site comes up with usable roles, mapped fees, and a way to recover attachments.",
+    stack: ["Frappe", "Python", "SQL", "Linux"],
     image: "/work/migration.png",
-    imageAlt: "Data migration screen with role sync and file pull",
-    problem:
-      "After a version move, sites had users without the right role profiles, school fees that did not map, and File list rows with no file on disk — metadata copied, attachments missing.",
-    roleDetail:
-      "I added default-user and role-profile sync, school-fee mapping in the migration script, and an optional pull-files-from-source step after the File list SQL copy.",
-    solution: [
-      "Default users created from JSON config, with role profiles synced before the user is created.",
-      "School-fee mapping and transform in the data migration script.",
-      "After File list SQL, techs can copy missing disk files onto the current site without overwriting existing files.",
-      "Encrypted student code when sending an account.",
-    ],
-    result:
-      "A migrated site comes up with usable roles, mapped fees, and a way to recover attachments instead of empty File rows.",
-    technical: [
-      "ensure_role_profile and run_set_default_users in shared utilities.",
-      "Migration mapping table for school fees.",
-      "File-pull after tabFile SQL; logs errors instead of silent pass.",
-      "Linux path copy; does not call file_upload_to_s3 or overwrite existing files.",
-    ],
+    imageAlt: "Data migration screen for roles and files",
   },
   {
-    id: "ahon",
-    role: "web",
-    category: "Web Application",
-    title: "Ahon",
-    description:
-      "A web app for tracking cash, savings, and utang. I designed the data model, built the ledger and budget workflows, and deployed it with authentication and cloud sync.",
-    tags: ["JavaScript", "Next.js", "HTML / CSS", "REST APIs"],
-    image: "/work/ahon.png",
-    imageAlt: "Ahon home dashboard with budget and ledger",
-    liveUrl: "https://ahon.almariedev.com/",
-    problem:
-      "Household cash, savings (tigum), and utang lived in notes and mental math. There was no single ledger that could show budget versus actual, or whether the month could cover essentials and debt dues.",
-    roleDetail:
-      "I designed the data model, built the UI (Home, Ledger, Budget, Utang, Tigum), added auth and cloud sync, and deployed the app.",
-    solution: [
-      "Ledger for income, expense, transfer, and utang payment.",
-      "Period budgets compared to actuals on Home.",
-      "Utang schedules and tigum (savings) that also write ledger rows.",
-      "Auth and Postgres sync so the books are not only in the browser.",
-      "Monthly survival view: income versus essentials and debt dues.",
+    slug: "online-payments",
+    title: "Online payments",
+    category: "Billing",
+    summary:
+      "Schools collect fees online. I worked on the payment links, pulling those payments into the school, and allocating them on the student ledger.",
+    did: [
+      "Pre-enrollment payment methods the school can maintain.",
+      "Payment links taken from environment settings.",
+      "A pull of online payments into school billing.",
+      "Auto-allocation of an online payment onto the student’s fees.",
     ],
-    result:
-      "A working public app at ahon.almariedev.com — ledger, budget, and debt in one place, with cloud sync for the people who need it.",
-    technical: [
-      "Next.js, React, TypeScript, HTML/CSS.",
-      "localStorage first, then Supabase Auth + Postgres with RLS.",
-      "Accounts, categories, particulars, budget periods, transactions.",
-      "Balance adjustments post a ledger row instead of silently changing opening balance.",
+    outcome:
+      "A fee paid online can land on the student account without someone retyping it.",
+    stack: ["Frappe", "Python", "ERPNext"],
+  },
+  {
+    slug: "grading",
+    title: "Grading",
+    category: "Grading",
+    summary:
+      "Grading sits in the same school system. I fixed the parts that broke in use: senior-high master grades, a grading report, and class lists that showed the wrong name.",
+    did: [
+      "Senior-high master grade fixes.",
+      "A grading report field and print format.",
+      "Class list uses the student’s current full name.",
     ],
+    outcome:
+      "The grade record and the class list can be opened without the old name or a broken report.",
+    stack: ["Frappe", "Python"],
+  },
+  {
+    slug: "sms-and-email",
+    title: "SMS and email",
+    category: "School system",
+    summary:
+      "Billing notices and school messages. I worked on SMS blast billing, the change from SMART to GLOBE, and email digests.",
+    did: [
+      "SMS blast billing so the message matches the account.",
+      "SMS API calls switched from SMART to GLOBE.",
+      "Email digest recipients sent through the default email account.",
+    ],
+    outcome:
+      "Schools can send the billing SMS and the email digest without the old sender or a stuck queue.",
+    stack: ["Frappe", "Python"],
+  },
+  {
+    slug: "erp-livro",
+    title: "ERP Livro",
+    category: "Internal",
+    summary:
+      "The internal ERP at Livro Systems. I was assigned to the employee onboarding and offboarding process, and to user access requests.",
+    did: [
+      "Employee onboarding and offboarding.",
+      "User access requests.",
+    ],
+    outcome:
+      "Staff onboarding, offboarding, and access requests are handled in ERP Livro.",
+    stack: ["Frappe", "ERPNext"],
   },
 ];
 
-export function getProject(id: string) {
-  return projects.find((project) => project.id === id);
-}
-
-export const principles = [
+export const experience: {
+  org: string;
+  roles: { title: string; dates: string; note?: string }[];
+}[] = [
   {
-    title: "Business first.",
-    description: "Technology should solve an operational problem.",
+    org: "Livro Systems, Inc.",
+    roles: [
+      {
+        title: "Web Developer",
+        dates: "September 2026 – Present",
+        note: "Restructure. The Product Owner role was removed for redundancy.",
+      },
+      {
+        title: "Product Owner",
+        dates: "January 2026 – October 2026",
+      },
+    ],
   },
   {
-    title: "Build from the workflow.",
-    description: "I start with how the work is actually done.",
-  },
-  {
-    title: "Systems matter.",
-    description: "Good tools need reliable data and permissions behind them.",
-  },
-  {
-    title: "Keep it maintainable.",
-    description: "Simple, clear implementations last longer in production.",
-  },
-];
-
-export const tools = [
-  {
-    id: "frappe" as const,
-    category: "ERP",
-    items: ["Frappe Framework", "ERPNext", "Python", "SQL / MariaDB"],
-  },
-  {
-    id: "web" as const,
-    category: "Development",
-    items: ["JavaScript", "HTML / CSS", "REST APIs", "Git / GitHub"],
-  },
-  {
-    id: "systems" as const,
-    category: "Systems",
-    items: [
-      "Linux",
-      "Backend & frontend",
-      "Database troubleshooting",
-      "Production support",
+    org: "Wela School Systems",
+    roles: [
+      {
+        title: "Senior Web Developer",
+        dates: "February 2024 – December 2025",
+      },
+      {
+        title: "Mid-Senior Web Developer",
+        dates: "September 2023 – February 2024",
+      },
+      {
+        title: "Junior Web Developer",
+        dates: "March 2020 – September 2023",
+      },
     ],
   },
 ];
 
 export const about = {
-  lead: "I am a Web Developer and ERP Developer specializing in Frappe Framework and ERPNext.",
-  body: "I build, customize, maintain, and troubleshoot business applications based on real operational requirements. Working with business and operations teams helps me translate those requirements into practical technical solutions.",
-  close:
-    "I am looking for opportunities as a Frappe/ERPNext Developer, ERP Developer, Python Developer, Web Developer, or Full-Stack Developer.",
+  eyebrow: "About",
+  title: "Web developer since 2020",
+  paragraphs: [
+    "I’m Almarie. I’m a full-time web developer in Product Development at Livro Systems, Inc. The company was Wela School Systems. Same place since March 2020.",
+    "I was assigned to the school management system — admission, enrollment, billing, and grading — and to ERP Livro, the internal process for employee onboarding, offboarding, and user access requests.",
+    "I’m starting to build my own project. New work I take is contract and freelance only. I can take more than one project, on flexi time or a night shift in Philippine time.",
+  ],
+  facts: [
+    { label: "Experience", value: "Since March 2020" },
+    { label: "Company", value: "Livro Systems, Inc. (formerly Wela)" },
+    { label: "Department", value: "Product Development" },
+    { label: "Now", value: "Web Developer, full-time" },
+    { label: "Tools", value: "Frappe, ERPNext, Python, JavaScript" },
+    { label: "New work", value: "Contract and freelance only" },
+    { label: "Hours for new work", value: "Flexi time or night shift, PH time" },
+  ],
 };
 
-export const roleHeroCopy: Record<
-  RoleId | "default",
-  { headline: string; support: string }
-> = {
-  default: {
-    headline:
-      "Web Developer and ERP Developer specializing in Frappe Framework and ERPNext.",
-    support:
-      "I build, customize, maintain, and troubleshoot business applications based on real operational requirements.",
-  },
-  web: {
-    headline: "I build web applications around real workflows.",
-    support:
-      "From interfaces to APIs and maintenance, I develop practical systems teams can rely on.",
-  },
-  frappe: {
-    headline: "I customize ERPNext around how operations actually run.",
-    support:
-      "DocTypes, scripts, workflows, reports, and permissions — built from the requirement, not the other way around.",
-  },
+export const contact = {
+  eyebrow: "Contact",
+  title: "If you have a project",
+  lead: "Send a contract or freelance project: a web app, an ERPNext customization, or a fix on something already live. I can take more than one. I’m full-time at Livro, so those hours are flexi time or a night shift, Philippine time.",
+  responseTime: "I usually reply within a few days.",
+  projectTypes: [
+    "Web app",
+    "ERPNext customization",
+    "Bug fix",
+    "Report or workflow",
+    "Something else",
+  ],
 };

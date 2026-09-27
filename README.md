@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Edit `src/lib/content.ts` for copy, projects, tools, and contact links.
 
-Role paths are shareable via query string, e.g. `/?path=frappe` or `/?path=web`.
+Panels are shareable via query string, e.g. `/?panel=work` or `/?panel=about`.
 
 ## Deploy
 
