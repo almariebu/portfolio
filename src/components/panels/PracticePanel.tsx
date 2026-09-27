@@ -4,11 +4,11 @@ import { PanelHeading } from "@/components/ui";
 
 export function PracticePanel() {
   return (
-    <div className="flex min-h-full flex-col gap-4 md:h-full md:min-h-0 md:overflow-hidden">
+    <div className="flex flex-col gap-4">
       <div className="flex items-center gap-3 md:hidden">
         <Image
           src={site.photo}
-          alt="Portrait of Almarie Bu"
+          alt="Portrait of Almarie Bullo"
           width={663}
           height={1024}
           className="size-14 shrink-0 rounded-2xl object-cover object-[center_18%]"
@@ -21,30 +21,29 @@ export function PracticePanel() {
 
       <PanelHeading
         eyebrow="What I do"
-        title="Two kinds of work, from the same job"
-        description="Product Development at Livro Systems, Inc. School system for admission, enrollment, billing, and grading. ERP Livro for onboarding, offboarding, and user access."
+        title="Web applications and ERPNext customization"
       />
 
-      <div className="grid gap-3 md:min-h-0 md:flex-1 md:grid-rows-2 md:overflow-hidden">
+      <div className="grid gap-3">
         {disciplines.map((discipline) => (
           <article
             key={discipline.id}
-            className="flex flex-col rounded-2xl border border-night-line bg-night-soft p-4 md:min-h-0 md:overflow-y-auto md:p-5"
+            className="rounded-2xl border border-night-line bg-night-soft p-4 md:p-5"
           >
-            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-night-muted uppercase">
+            <p className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">
               {discipline.label}
             </p>
             <h3 className="mt-2 font-display text-lg font-semibold leading-snug tracking-tight text-night-ink">
               {discipline.title}
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-night-muted">
+            <p className="mt-2 text-sm leading-relaxed text-night-ink">
               {discipline.description}
             </p>
             <ul className="mt-3 flex flex-wrap gap-1.5">
               {discipline.capabilities.map((capability) => (
                 <li
                   key={capability}
-                  className="rounded-full bg-night-raised px-2.5 py-1 text-[0.72rem] text-night-muted"
+                  className="rounded-full bg-night-raised px-3 py-1 text-sm text-night-ink"
                 >
                   {capability}
                 </li>

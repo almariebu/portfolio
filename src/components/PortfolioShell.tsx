@@ -297,9 +297,9 @@ export function PortfolioShell({
           role="tabpanel"
           aria-labelledby={`tab-${shown}`}
           tabIndex={0}
-          className="stage-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 outline-none sm:p-5 md:overflow-hidden md:p-6"
+          className="stage-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 outline-none sm:p-5 md:p-6"
         >
-          <div key={shown} className="panel-in h-full min-h-full md:min-h-0">
+          <div key={shown} className="panel-in min-h-full">
             {shown === "home" ? (
               <HomePanel
                 onWork={() => selectPanel("work")}

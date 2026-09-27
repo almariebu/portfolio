@@ -6,7 +6,7 @@
 export type Pending<T> = T | null;
 
 export const site = {
-  name: "Almarie Bu",
+  name: "Almarie Bullo",
   initials: "AB",
   photo: "/almarie.jpg",
   roles: ["Web Developer", "ERPNext Developer"],
@@ -15,20 +15,15 @@ export const site = {
   company: "Livro Systems, Inc.",
   formerCompany: "Wela School Systems",
   intro:
-    "Full-time web developer at Livro Systems, Inc. since March 2020. It was Wela School Systems before the rename. I am in Product Development, on the school system and ERP Livro. New work is contract and freelance only. I can take more than one of those, on flexi time or a night shift in Philippine time. I’m starting to build my own project.",
-  availability: "Full-time at Livro · open to contract and freelance",
+    "I build and improve school management and ERP systems with Python, JavaScript, Frappe, and ERPNext. Since 2020, my work has covered enrollment, billing, payments, grading, and internal workflows.",
+  availability:
+    "Available for remote contract and freelance work · Flexible hours · UTC+8",
   email: "almariebullo@gmail.com",
   linkedin: "https://www.linkedin.com/in/almarie-alim-bullo/",
   github: "https://github.com/almarieeebu",
   resume: null as Pending<string>,
   url: "https://almariebu.vercel.app",
 };
-
-export const snapshot = [
-  { value: "Since 2020", label: "Experience" },
-  { value: "Full-time", label: "Livro Systems" },
-  { value: "Contract / freelance", label: "New work" },
-];
 
 export const screenshotNote =
   "This screenshot is not the actual system. It is for visualization only.";
@@ -45,9 +40,9 @@ export const disciplines: {
   {
     id: "web",
     label: "Web development",
-    title: "Screens, APIs, and fixes",
+    title: "Interfaces and APIs",
     description:
-      "I build the pages and APIs people use, then I fix them when something breaks in real use.",
+      "I develop interfaces and APIs, troubleshoot production issues, and improve existing workflows.",
     capabilities: [
       "JavaScript",
       "HTML / CSS",
@@ -61,7 +56,7 @@ export const disciplines: {
     label: "ERPNext development",
     title: "Frappe and ERPNext",
     description:
-      "I customize ERPNext for the school system and for ERP Livro: forms, scripts, workflows, reports, and permissions.",
+      "I customize ERPNext for school operations and internal staff processes: forms, workflows, reports, and permissions.",
     capabilities: [
       "DocTypes",
       "Python",
@@ -78,8 +73,10 @@ export type CaseStudy = {
   title: string;
   category: string;
   summary: string;
-  did: string[];
-  outcome: string;
+  featured: boolean;
+  problem: string;
+  responsibility: string[];
+  improvement: string;
   stack: string[];
   image?: string;
   imageAlt?: string;
@@ -91,18 +88,21 @@ export const caseStudies: CaseStudy[] = [
     title: "College admission and enrollment",
     category: "Enrollment",
     summary:
-      "Part of the school management system at Livro Systems. College enrollment was split across applicant, subjects, fees, and approvals. I built the forms and the path so a student can move from application to a locked enrollment.",
-    did: [
-      "Applicant, matriculation, and enrollee forms.",
-      "Sectioning, including a fix so the class time can change after submit.",
-      "Student applicant errors that were landing on the enrollee.",
-      "Workflow from Draft through Dean, Registrar, and Finance.",
-      "A payment check before finance can lock the record.",
-      "Unit limits and term fee rules on the matriculation form.",
-      "A fix so an existing enrollee is not reset when enrollment runs again.",
+      "One path from application to a finished enrollment for registrars, deans, and finance.",
+    featured: true,
+    problem:
+      "College enrollment was split across the application, the subject list, fees, and approvals. Registrars, deans, and finance staff had no single path from a new applicant to a finished enrollment.",
+    responsibility: [
+      "Built the applicant form, the subject-and-fee form, and the enrolled-student form.",
+      "Staff can still change a class time after the schedule is submitted.",
+      "An error on the applicant record no longer shows up on the enrolled student.",
+      "Approvals move from Draft through the dean, the registrar, and finance.",
+      "Finance cannot lock the enrollment until the payment check passes.",
+      "The subject-and-fee form enforces unit limits and the fees for that term.",
+      "Running enrollment again does not wipe a student who is already enrolled.",
     ],
-    outcome:
-      "Enrollment stays in the system. Payment and approvals are checked on the form, not in email.",
+    improvement:
+      "A student can move from application to a locked enrollment in the system. Payment and approvals are checked on the form, not over email.",
     stack: ["Frappe", "Python", "JavaScript", "MariaDB"],
     image: "/work/college.png",
     imageAlt: "College matriculation form with an approval workflow",
@@ -112,16 +112,19 @@ export const caseStudies: CaseStudy[] = [
     title: "Account closing and cashiering",
     category: "Billing",
     summary:
-      "Billing on the school system. Term closing and cashier payments were failing in production. I worked on account closing, tellering, and overpayments so cashiers could finish the work.",
-    did: [
-      "Account closing that creates student ledgers in the background.",
-      "A clearer error when a closing cannot start.",
-      "Tellering updates for downpayment and reconciliation.",
-      "Student overpayment, so extra payment stays on the ledger.",
-      "Penalty due dates that include the same day.",
+      "Cashiers can close a term and post payments when the live process was failing.",
+    featured: true,
+    problem:
+      "At the end of a term, cashiers could not close student accounts or post payments. The errors stopped the cashier desk.",
+    responsibility: [
+      "Account closing now builds the student ledgers in the background.",
+      "If a closing cannot start, the screen says why.",
+      "Cashier updates cover the down payment and reconciliation.",
+      "An extra payment stays on the student ledger instead of being dropped.",
+      "A penalty is still due on the date itself, not only the day after.",
     ],
-    outcome:
-      "Cashiers can close accounts and post payments without the error that was blocking them.",
+    improvement:
+      "Cashiers can close accounts and post payments, including overpayments that remain on the student ledger.",
     stack: ["Frappe", "Python", "JavaScript", "SQL"],
     image: "/work/closing.png",
     imageAlt: "Account closing form with a tellering table",
@@ -131,14 +134,17 @@ export const caseStudies: CaseStudy[] = [
     title: "Student discounts",
     category: "Billing",
     summary:
-      "Billing on the school system. Discounts were entered in a few places, and finance had no single view. I added batch discounts and a summary report.",
-    did: [
-      "Discount calculated from the total assessment or from what is left to pay.",
-      "A batch discount so finance does not rebuild the numbers in a spreadsheet.",
-      "Student Discount Summary, with filters for school year, semester, and discount type.",
+      "Finance can see every discount and apply a batch without a spreadsheet.",
+    featured: true,
+    problem:
+      "Finance entered student discounts in more than one place and had no single view of who received one.",
+    responsibility: [
+      "A discount can be calculated from the full assessment or from the balance still due.",
+      "A batch discount applies the same rule to many students, so finance does not rebuild the numbers in a spreadsheet.",
+      "A Student Discount Summary filters by school year, semester, and discount type.",
     ],
-    outcome:
-      "Finance can see who received a discount and apply a batch from one place.",
+    improvement:
+      "Finance can see who received a discount and apply a batch from one screen.",
     stack: ["Frappe", "Python", "SQL", "Script Report"],
     image: "/work/discounts.png",
     imageAlt: "Student discount summary report",
@@ -148,17 +154,20 @@ export const caseStudies: CaseStudy[] = [
     title: "Basic education enrollment",
     category: "Enrollment",
     summary:
-      "Enrollment on the school system. Basic-education records drifted after go-live: wrong incoming level, duplicate enrollees, withdrawals that left leftovers, and class lists with old names.",
-    did: [
-      "Incoming level stays for new students and moves up for continuing students.",
-      "A withdraw flow that cleans related records.",
-      "A check that blocks a duplicate enrollee on save.",
-      "Class list uses the student’s current name.",
-      "Teachers only receive the classes they should see.",
+      "Registrars can enroll, continue, and withdraw a student without duplicate rows.",
+    featured: false,
+    problem:
+      "After go-live, basic-education records drifted: the wrong incoming grade, duplicate enrollments, withdrawals that left leftover records, and class lists with old names. Registrars and teachers were working from those records.",
+    responsibility: [
+      "A new student keeps the incoming grade. A continuing student moves up.",
+      "Withdrawing a student also clears the related records.",
+      "Saving a second enrollment for the same student is blocked.",
+      "The class list uses the student’s current name.",
+      "Teachers only see the classes assigned to them.",
       "Leftover grades are removed when a senior-high student withdraws.",
     ],
-    outcome:
-      "Registrars can enroll, continue, and withdraw a student without duplicate rows.",
+    improvement:
+      "Registrars can enroll, continue, and withdraw a student without duplicate rows or leftover grades.",
     stack: ["Frappe", "Python", "JavaScript", "Permissions"],
     image: "/work/bed.png",
     imageAlt: "Enrollees form used for basic education",
@@ -168,14 +177,17 @@ export const caseStudies: CaseStudy[] = [
     title: "Roles and data migration",
     category: "School system",
     summary:
-      "School system upkeep. After a version move, users had the wrong roles, school fees did not map, and some file records had no file on disk.",
-    did: [
-      "Default users created with the right role profiles.",
-      "School-fee mapping in the migration script.",
-      "A step that copies missing files after the file list is imported, without overwriting files already there.",
+      "A moved site comes up with the right roles, mapped fees, and recovered files.",
+    featured: false,
+    problem:
+      "After a version move, staff had the wrong roles, school fees did not map, and some file records had no file on disk.",
+    responsibility: [
+      "Default users are created with the right role profiles.",
+      "The migration script maps school fees.",
+      "Missing files are copied after the file list is imported, without overwriting files already there.",
     ],
-    outcome:
-      "A migrated site comes up with usable roles, mapped fees, and a way to recover attachments.",
+    improvement:
+      "A migrated site opens with usable roles, mapped fees, and a way to recover attachments.",
     stack: ["Frappe", "Python", "SQL", "Linux"],
     image: "/work/migration.png",
     imageAlt: "Data migration screen for roles and files",
@@ -185,14 +197,17 @@ export const caseStudies: CaseStudy[] = [
     title: "Online payments",
     category: "Billing",
     summary:
-      "Schools collect fees online. I worked on the payment links, pulling those payments into the school, and allocating them on the student ledger.",
-    did: [
-      "Pre-enrollment payment methods the school can maintain.",
-      "Payment links taken from environment settings.",
-      "A pull of online payments into school billing.",
-      "Auto-allocation of an online payment onto the student’s fees.",
+      "A fee paid online lands on the student account without retyping.",
+    featured: false,
+    problem:
+      "Schools collect fees online, but staff still had to retype a paid fee onto the student account.",
+    responsibility: [
+      "Schools can maintain the payment methods used before enrollment.",
+      "Payment links come from the school’s settings, not a hardcoded address.",
+      "Online payments are pulled into school billing.",
+      "A paid amount is allocated onto the student’s fees.",
     ],
-    outcome:
+    improvement:
       "A fee paid online can land on the student account without someone retyping it.",
     stack: ["Frappe", "Python", "ERPNext"],
   },
@@ -201,14 +216,17 @@ export const caseStudies: CaseStudy[] = [
     title: "Grading",
     category: "Grading",
     summary:
-      "Grading sits in the same school system. I fixed the parts that broke in use: senior-high master grades, a grading report, and class lists that showed the wrong name.",
-    did: [
-      "Senior-high master grade fixes.",
-      "A grading report field and print format.",
-      "Class list uses the student’s current full name.",
+      "Grade records and class lists show the current student, and the report prints.",
+    featured: false,
+    problem:
+      "Registrars and teachers opened grade records that showed an old student name, or a senior-high grade report that would not print correctly.",
+    responsibility: [
+      "Fixed senior-high master grade records.",
+      "Corrected a grading report field and its print format.",
+      "The class list uses the student’s current full name.",
     ],
-    outcome:
-      "The grade record and the class list can be opened without the old name or a broken report.",
+    improvement:
+      "The grade record and the class list show the current name, and the senior-high report can be printed.",
     stack: ["Frappe", "Python"],
   },
   {
@@ -216,14 +234,17 @@ export const caseStudies: CaseStudy[] = [
     title: "SMS and email",
     category: "School system",
     summary:
-      "Billing notices and school messages. I worked on SMS blast billing, the change from SMART to GLOBE, and email digests.",
-    did: [
-      "SMS blast billing so the message matches the account.",
-      "SMS API calls switched from SMART to GLOBE.",
-      "Email digest recipients sent through the default email account.",
+      "Billing texts and email digests go out on the current sender.",
+    featured: false,
+    problem:
+      "Billing text messages still used the old SMART sender, and some email digests sat unsent.",
+    responsibility: [
+      "The billing text matches what the student account shows.",
+      "Text messages now go through GLOBE instead of SMART.",
+      "Email digest recipients are sent through the school’s default email account.",
     ],
-    outcome:
-      "Schools can send the billing SMS and the email digest without the old sender or a stuck queue.",
+    improvement:
+      "Schools can send the billing text and the email digest without the old sender or a stuck queue.",
     stack: ["Frappe", "Python"],
   },
   {
@@ -231,12 +252,15 @@ export const caseStudies: CaseStudy[] = [
     title: "ERP Livro",
     category: "Internal",
     summary:
-      "The internal ERP at Livro Systems. I was assigned to the employee onboarding and offboarding process, and to user access requests.",
-    did: [
-      "Employee onboarding and offboarding.",
-      "User access requests.",
+      "Staff onboarding, offboarding, and access requests in the internal ERP.",
+    featured: false,
+    problem:
+      "Livro Systems needed employee onboarding, offboarding, and user access requests handled in the internal ERP.",
+    responsibility: [
+      "Assigned to the employee onboarding and offboarding process.",
+      "Assigned to user access requests.",
     ],
-    outcome:
+    improvement:
       "Staff onboarding, offboarding, and access requests are handled in ERP Livro.",
     stack: ["Frappe", "ERPNext"],
   },
@@ -244,19 +268,20 @@ export const caseStudies: CaseStudy[] = [
 
 export const experience: {
   org: string;
+  note?: string;
   roles: { title: string; dates: string; note?: string }[];
 }[] = [
   {
     org: "Livro Systems, Inc.",
+    note: "Product Owner ended in August 2026. Role changed following organizational restructuring.",
     roles: [
       {
         title: "Web Developer",
         dates: "September 2026 – Present",
-        note: "Restructure. The Product Owner role was removed for redundancy.",
       },
       {
         title: "Product Owner",
-        dates: "January 2026 – October 2026",
+        dates: "January 2026 – August 2026",
       },
     ],
   },
@@ -285,7 +310,7 @@ export const about = {
   paragraphs: [
     "I’m Almarie. I’m a full-time web developer in Product Development at Livro Systems, Inc. The company was Wela School Systems. Same place since March 2020.",
     "I was assigned to the school management system — admission, enrollment, billing, and grading — and to ERP Livro, the internal process for employee onboarding, offboarding, and user access requests.",
-    "I’m starting to build my own project. New work I take is contract and freelance only. I can take more than one project, on flexi time or a night shift in Philippine time.",
+    "I’m starting to build my own project. I also take remote contract and freelance work, on flexible hours (UTC+8).",
   ],
   facts: [
     { label: "Experience", value: "Since March 2020" },
@@ -293,15 +318,15 @@ export const about = {
     { label: "Department", value: "Product Development" },
     { label: "Now", value: "Web Developer, full-time" },
     { label: "Tools", value: "Frappe, ERPNext, Python, JavaScript" },
-    { label: "New work", value: "Contract and freelance only" },
-    { label: "Hours for new work", value: "Flexi time or night shift, PH time" },
+    { label: "New work", value: "Remote contract and freelance" },
+    { label: "Hours", value: "Flexible hours, UTC+8" },
   ],
 };
 
 export const contact = {
   eyebrow: "Contact",
   title: "If you have a project",
-  lead: "Send a contract or freelance project: a web app, an ERPNext customization, or a fix on something already live. I can take more than one. I’m full-time at Livro, so those hours are flexi time or a night shift, Philippine time.",
+  lead: "A web app, an ERPNext customization, or a fix on something already live. The button opens an email draft. The address below works if you prefer to write directly.",
   responseTime: "I usually reply within a few days.",
   projectTypes: [
     "Web app",

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Almarie Bullo — Web Developer</title>
-  <meta name="description" content="Almarie Bullo, web developer in Product Development at Livro Systems, Inc. (formerly Wela School Systems), since March 2020. School management and ERP Livro.">
+  <meta name="description" content="Almarie Bullo, web developer. School management and ERP systems in Python, JavaScript, Frappe, and ERPNext. Wela School Systems, 2020–2025; Livro Systems, Inc., 2026–present.">
   <style>
     :root {
       color-scheme: light;
@@ -25,8 +25,8 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.45;
+      font-size: 15px;
+      line-height: 1.4;
       color: var(--body);
     }
 
@@ -59,8 +59,8 @@
     }
 
     .photo {
-      width: 32mm;
-      height: 40mm;
+      width: 28mm;
+      height: 34mm;
       object-fit: cover;
       object-position: center 18%;
       flex: 0 0 auto;
@@ -70,7 +70,7 @@
 
     h1 {
       font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
-      font-size: 2.15rem;
+      font-size: 1.95rem;
       font-weight: 560;
       letter-spacing: -0.03em;
       line-height: 1;
@@ -103,9 +103,9 @@
     a { color: var(--ink); text-underline-offset: 2px; }
 
     .availability {
-      display: inline-block;
-      margin-top: 0.55rem;
-      padding: 0.28rem 0.6rem;
+      display: block;
+      margin-top: 0.45rem;
+      padding: 0.2rem 0.55rem;
       border: 1px solid #e4d3ae;
       background: #f8f1e3;
       color: var(--accent);
@@ -117,7 +117,7 @@
     }
 
     h2 {
-      margin: 1.05rem 0 0.45rem;
+      margin: 0.5rem 0 0.22rem;
       padding-bottom: 0.18rem;
       border-bottom: 1px solid var(--line);
       color: var(--ink);
@@ -130,8 +130,8 @@
     }
 
     .summary {
-      margin-top: 1rem;
-      max-width: 42rem;
+      margin-top: 0.55rem;
+      max-width: 46rem;
     }
 
     .summary p + p { margin-top: 0.45rem; }
@@ -144,7 +144,7 @@
 
     .looking li,
     .duties li {
-      margin-top: 0.2rem;
+      margin-top: 0.12rem;
       padding-left: 0.15rem;
     }
 
@@ -184,7 +184,7 @@
       -webkit-print-color-adjust: exact;
     }
 
-    .job p { margin-top: 0.4rem; }
+    .job p { margin-top: 0.28rem; }
 
     .projects {
       margin: 0.55rem 0 0;
@@ -216,12 +216,12 @@
       font-size: 0.86rem;
     }
 
-    .job + .job { margin-top: 0.8rem; }
+    .job + .job { margin-top: 0.5rem; }
 
     .skills {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.7rem 1.4rem;
+      gap: 0.28rem 1.15rem;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -234,10 +234,10 @@
     }
 
     .skills p {
-      margin-top: 0.15rem;
+      margin-top: 0.08rem;
       color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.4;
+      font-size: 0.88rem;
+      line-height: 1.3;
     }
 
     .note {
@@ -254,9 +254,13 @@
       h1 { font-size: 1.8rem; }
     }
 
+    @page { size: A4; }
+
     @media print {
       html, body { background: #fff; }
       .screen-note { display: none !important; }
+      .skills { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 1.95rem; }
       .sheet {
         width: auto;
         max-width: none;
@@ -265,7 +269,7 @@
         box-shadow: none;
       }
       a { text-decoration: none; }
-      h2, .job, .skills li { break-inside: avoid; page-break-inside: avoid; }
+      .header, .availability, .summary, h2, h3, .job, .skills { break-inside: avoid; page-break-inside: avoid; }
     }
   </style>
 </head>
@@ -285,98 +289,29 @@
       <div>
         <h1>Almarie Bullo</h1>
         <hr class="rule">
-        <p class="title">Web Developer</p>
-        <p class="meta">Livro Systems, Inc. · since March 2020</p>
-        <p class="contact">Formerly Wela School Systems · Product Development</p>
+        <p class="title">Web Developer | Python, JavaScript, Frappe &amp; ERPNext</p>
+        <p class="meta">Product Development</p>
         <ul class="contacts">
           <li><a href="mailto:almariebullo@gmail.com">almariebullo@gmail.com</a></li>
-          <li><strong>Mobile</strong> <a href="tel:+639059648728">0905 964 8728</a></li>
-          <li><strong>WhatsApp</strong> <a href="https://wa.me/639059648728">+63 905 964 8728</a></li>
-          <li><strong>Telegram</strong> <a href="https://t.me/almariebu">@almariebu</a></li>
+          <li>
+            <strong>Mobile</strong> <a href="tel:+639059648728">+63 905 964 8728</a>
+            · <a href="https://wa.me/639059648728">WhatsApp</a>
+            · <a href="https://t.me/almariebu">Telegram @almariebu</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/almarie-alim-bullo/">LinkedIn</a>
+            · <a href="https://github.com/almarieeebu">GitHub</a>
+          </li>
         </ul>
-        <p class="availability">Full-time at Livro · new work is contract and freelance · flexi time or night shift (PH)</p>
       </div>
     </header>
 
+    <p class="availability">Available for remote contract and freelance projects<br>Flexible hours or evening work · Philippine time (UTC+8)</p>
+
     <section class="summary">
       <p>
-        I have been in Product Development since March 2020, first at Wela School Systems and now at Livro Systems, Inc. I work on the school management system (admission, enrollment, billing, and grading) and on ERP Livro (employee onboarding, offboarding, and user access requests). I did not keep a personal portfolio beside the job. I am building one now, and I have started a personal project.
+        Web developer with 6+ years of experience developing school management and ERP systems. Experienced in Python, JavaScript, Frappe, and ERPNext, with work spanning enrollment, billing, payment allocation, grading, and employee access workflows. Career progression includes senior development and product ownership.
       </p>
-      <p>
-        I am full-time at Livro Systems. New work I take is contract and freelance only. I can work on more than one of those, on flexi time or a night shift in Philippine time.
-      </p>
-    </section>
-
-    <section>
-      <h2>What I am looking for</h2>
-      <ul class="looking">
-        <li>Contract and freelance only, alongside my full-time role at Livro</li>
-        <li>More than one project at a time</li>
-        <li>Flexi time or a night shift, Philippine time</li>
-        <li>Remote only</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-      <ul class="projects">
-        <li>
-          <strong>School Management System</strong>
-          <span>Admission, enrollment, billing, and grading. Basic education and college.</span>
-        </li>
-        <li>
-          <strong>ERP Livro, internal</strong>
-          <span>Employee onboarding and offboarding, and user access requests.</span>
-        </li>
-      </ul>
-
-      <div class="job">
-        <h3>Web Developer</h3>
-        <p class="when">Livro Systems, Inc. · September 2026 – Present</p>
-        <p class="role-note">This followed an organization restructuring due to redundancy.</p>
-        <ul class="duties">
-          <li>Continue Product Development on the school system and ERP Livro.</li>
-          <li>Enrollment web form, online payment allocation, and SMS billing, including the gateway change from Smart to Globe.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <h3>Product Owner</h3>
-        <p class="when">Livro Systems, Inc. · January 2026 – October 2026</p>
-        <ul class="duties">
-          <li>Owned the school management system and ERP Livro, and kept shipping the product with the team.</li>
-          <li>Enrollment status, tellering and billing, and SMS sent from the school system.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <h3>Senior Web Developer</h3>
-        <p class="when">Wela School Systems · February 2024 – December 2025</p>
-        <ul class="duties">
-          <li>Tellering and billing: payment status, fee allocation, matriculation, discounts, and statements of account.</li>
-          <li>Pre-enrollment and enrollment for basic education and college, including enrollment status.</li>
-          <li>Grading, SMS billing, and access for finance and registrar users.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <h3>Mid-Senior Web Developer</h3>
-        <p class="when">Wela School Systems · September 2023 – February 2024</p>
-        <ul class="duties">
-          <li>School billing on live sites: ledger adjustments, discounts, and statements of account.</li>
-          <li>Matriculation, including excess discounts credited back to previous balances.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <h3>Junior Web Developer</h3>
-        <p class="when">Wela School Systems · March 2020 – September 2023</p>
-        <ul class="duties">
-          <li>Online enrollment web forms for school sites, from 2020.</li>
-          <li>Grade slips and grading rules.</li>
-          <li>College billing: matriculation, fees, and the enrollment ledger.</li>
-        </ul>
-      </div>
     </section>
 
     <section>
@@ -401,9 +336,58 @@
       </ul>
     </section>
 
-    <p class="note">
-      Almarie Bullo · full-time in Product Development, Livro Systems, Inc., since March 2020. New work is contract and freelance only, on flexi time or a night shift (Philippine time).
-    </p>
+    <section>
+      <h2>Experience</h2>
+
+      <div class="job">
+        <h3>Web Developer</h3>
+        <p class="when">Livro Systems, Inc. · September 2026 – Present</p>
+        <p class="role-note">Role changed in September 2026 following organizational restructuring.</p>
+        <ul class="duties">
+          <li>Develop and maintain features on the school management system and ERP Livro, including employee onboarding, offboarding, and user access requests.</li>
+          <li>Maintain online enrollment forms and payment allocation so schools can enroll students and apply payments in the system.</li>
+          <li>Updated the SMS billing gateway from Smart to Globe so schools can send billing notifications.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <h3>Product Owner</h3>
+        <p class="when">Livro Systems, Inc. · January 2026 – August 2026</p>
+        <ul class="duties">
+          <li>Owned the school management system and ERP Livro, and continued delivery with the team.</li>
+          <li>Delivered updates for enrollment status, tellering, billing, and SMS sent from the school system.</li>
+        </ul>
+      </div>
+
+      <div class="job" id="senior">
+        <h3>Senior Web Developer</h3>
+        <p class="when">Wela School Systems · February 2024 – December 2025</p>
+        <ul class="duties">
+          <li>Developed and maintained tellering and billing features for payment status, fee allocation, matriculation, discounts, and statements of account.</li>
+          <li>Developed and maintained pre-enrollment and enrollment features for basic education and college, including enrollment status.</li>
+          <li>Maintained grading and SMS billing features, and configured access for finance and registrar users.</li>
+        </ul>
+      </div>
+
+      <div class="job" id="mid">
+        <h3>Mid-Senior Web Developer</h3>
+        <p class="when">Wela School Systems · September 2023 – February 2024</p>
+        <ul class="duties">
+          <li>Maintained school billing features on live sites, including ledger adjustments, discounts, and statements of account.</li>
+          <li>Updated matriculation so excess discounts are credited to previous balances.</li>
+        </ul>
+      </div>
+
+      <div class="job" id="junior">
+        <h3>Junior Web Developer</h3>
+        <p class="when">Wela School Systems · March 2020 – September 2023</p>
+        <ul class="duties">
+          <li>Developed and maintained online enrollment forms for school admissions, starting in 2020.</li>
+          <li>Developed and maintained grade slips and grading rules so schools can issue results from the system.</li>
+          <li>Developed and maintained college billing features for matriculation, fees, and the enrollment ledger.</li>
+        </ul>
+      </div>
+    </section>
   </article>
 </body>
 </html>

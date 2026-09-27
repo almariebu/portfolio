@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { site, snapshot } from "@/lib/content";
+import { site } from "@/lib/content";
 
 export function Identity({
   variant,
@@ -19,7 +19,7 @@ export function Identity({
       <div className={variant === "home" ? "flex items-center gap-4" : "flex items-center gap-3"}>
         <Image
           src={site.photo}
-          alt="Portrait of Almarie Bu"
+          alt="Portrait of Almarie Bullo"
           width={663}
           height={1024}
           priority
@@ -35,7 +35,6 @@ export function Identity({
               {site.name}
             </p>
           )}
-          <p className="mt-1 text-xs leading-snug text-ink-muted">{site.availability}</p>
         </div>
       </div>
 
@@ -52,28 +51,20 @@ export function Identity({
       )}
 
       <p className="mt-3 text-sm leading-relaxed text-ink-muted">{site.intro}</p>
+      <p className="mt-3 text-sm font-semibold leading-relaxed text-ink">{site.availability}</p>
 
       <ul className="mt-4 flex flex-wrap gap-2">
         {site.roles.map((role) => (
           <li
             key={role}
-            className="rounded-full border border-paper-line bg-white/70 px-3 py-1 text-xs font-semibold text-ink"
+            className="rounded-full border border-paper-line bg-white/70 px-3 py-1 text-sm font-semibold text-ink"
           >
             {role}
           </li>
         ))}
       </ul>
 
-      <dl className="mt-5 grid gap-3 border-t border-paper-line pt-4">
-        {snapshot.map((item) => (
-          <div key={item.label} className="flex items-baseline justify-between gap-3">
-            <dt className="text-sm text-ink-muted">{item.label}</dt>
-            <dd className="text-right text-sm font-semibold text-ink">{item.value}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <div className="mt-auto pt-6">
+      <div className="pt-5">
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
@@ -115,7 +106,7 @@ export function Identity({
             GitHub
           </a>
         </div>
-        <p className="mt-4 text-xs text-ink-muted">
+        <p className="mt-4 text-sm text-ink-muted">
           &copy; {year} {site.name}
         </p>
       </div>
