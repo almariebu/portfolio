@@ -224,7 +224,7 @@ export function PortfolioShell({
             className="size-9 shrink-0 rounded-full object-cover object-[center_18%]"
           />
           <span className="min-w-0">
-            <h1 className="truncate font-display text-xs font-semibold tracking-[0.14em] text-ink uppercase">
+            <h1 className="font-display text-sm font-semibold leading-tight text-ink">
               {site.name}
             </h1>
             <span className="block truncate text-[0.7rem] text-ink-muted">

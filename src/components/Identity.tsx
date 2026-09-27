@@ -27,7 +27,7 @@ export function Identity({
         />
         <div className="min-w-0">
           {variant === "rail" ? (
-            <p className="truncate font-display text-sm font-semibold tracking-[0.14em] uppercase">
+            <p className="font-display text-base font-semibold leading-tight tracking-tight text-ink">
               {site.name}
             </p>
           ) : (
