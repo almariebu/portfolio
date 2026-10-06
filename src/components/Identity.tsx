@@ -113,6 +113,14 @@ export function Identity({
           >
             CV
           </a>
+          <a
+            href={site.resumeDeveloper}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-ink-muted transition hover:text-ink"
+          >
+            Developer CV
+          </a>
         </div>
         <p className="mt-4 text-sm text-ink-muted">
           &copy; {year} {site.name}

@@ -66,6 +66,14 @@ export function ContactPanel() {
           >
             CV
           </a>
+          <a
+            href={site.resumeDeveloper}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex min-h-10 items-center rounded-full border border-night-line px-4 text-sm font-semibold text-night-ink transition hover:border-gold/40 hover:text-gold"
+          >
+            Developer CV
+          </a>
         </div>
       </div>
 
