@@ -82,7 +82,7 @@ export function Identity({
           </button>
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold">
+        <div className="mt-4 flex flex-wrap gap-x-4 text-sm font-semibold [&>a]:py-1">
           <a
             href={`mailto:${site.email}`}
             className="text-gold-deep transition hover:text-ink"
