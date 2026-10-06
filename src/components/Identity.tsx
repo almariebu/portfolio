@@ -111,7 +111,7 @@ export function Identity({
             rel="noreferrer noopener"
             className="text-ink-muted transition hover:text-ink"
           >
-            CV
+            ERP CV
           </a>
           <a
             href={site.resumeDeveloper}

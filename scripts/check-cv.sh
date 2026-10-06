@@ -10,7 +10,7 @@ present() { printf '%s\n' "$text" | grep -Fq -- "$1" || bad "$2: missing '$1'"; 
 
 absent no-sept-2026 'September 2026'
 absent no-restructuring 'restructur'
-absent no-buzzwords 'passionate|dynamic|results-driven|innovative'
+absent no-buzzwords 'passionate|dynamic|results-driven|innovative|rockstar|ninja|synergy|full-stack|backend'
 absent no-tech-verbs '(built|designed|developed|implemented|set up|configured) [^.]{0,40}(REST API|CI/CD|Docker|pipeline)'
 absent no-oncall 'on-call|24/7|incident'
 absent no-pm-terms 'roadmap|KPI|OKR'
