@@ -274,15 +274,14 @@ export const experience: {
 }[] = [
   {
     org: "Livro Systems, Inc.",
-    note: "Product Owner ended in August 2026. Role changed following organizational restructuring.",
     roles: [
       {
-        title: "Web Developer",
-        dates: "September 2026 – Present",
+        title: "Product Owner",
+        dates: "January 2026 – Present",
       },
       {
-        title: "Product Owner",
-        dates: "January 2026 – August 2026",
+        title: "Senior Web Developer",
+        dates: "April 2025 – December 2025",
       },
     ],
   },
@@ -291,7 +290,7 @@ export const experience: {
     roles: [
       {
         title: "Senior Web Developer",
-        dates: "February 2024 – December 2025",
+        dates: "February 2024 – March 2025",
       },
       {
         title: "Mid-Senior Web Developer",
@@ -309,7 +308,7 @@ export const about = {
   eyebrow: "About",
   title: "Web developer since 2020",
   paragraphs: [
-    "I’m Almarie. I’m a full-time web developer in Product Development at Livro Systems, Inc. The company was Wela School Systems. Same place since March 2020.",
+    "I’m Almarie. I’m the full-time Product Owner in Product Development at Livro Systems, Inc. The company was Wela School Systems, where I worked as a web developer from March 2020.",
     "I was assigned to the school management system — admission, enrollment, billing, and grading — and to ERP Livro, the internal process for employee onboarding, offboarding, and user access requests.",
     "I’m starting to build my own project. I also take remote contract and freelance work, on flexible hours (UTC+8).",
   ],
@@ -317,7 +316,7 @@ export const about = {
     { label: "Experience", value: "Since March 2020" },
     { label: "Company", value: "Livro Systems, Inc. (formerly Wela)" },
     { label: "Department", value: "Product Development" },
-    { label: "Now", value: "Web Developer, full-time" },
+    { label: "Now", value: "Product Owner, full-time" },
     { label: "Tools", value: "Frappe, ERPNext, Python, JavaScript" },
     { label: "New work", value: "Remote contract and freelance" },
     { label: "Hours", value: "Flexible hours, UTC+8" },
