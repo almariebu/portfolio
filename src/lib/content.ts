@@ -21,7 +21,7 @@ export const site = {
   email: "almariebullo@gmail.com",
   linkedin: "https://www.linkedin.com/in/almarie-alim-bullo/",
   github: "https://github.com/almarieeebu",
-  resume: null as Pending<string>,
+  resume: "/cv.html",
   url: "https://almariebu.vercel.app",
 };
 
