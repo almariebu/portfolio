@@ -279,6 +279,10 @@ export const experience: {
         title: "Product Owner",
         dates: "January 2026 – Present",
       },
+      {
+        title: "Senior Web Developer",
+        dates: "April 2025 – December 2025",
+      },
     ],
   },
   {
@@ -286,7 +290,7 @@ export const experience: {
     roles: [
       {
         title: "Senior Web Developer",
-        dates: "February 2024 – December 2025",
+        dates: "February 2024 – March 2025",
       },
       {
         title: "Mid-Senior Web Developer",
