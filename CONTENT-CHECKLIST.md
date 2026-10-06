@@ -10,15 +10,12 @@ thing as the site.
   The site and all four CVs agree. No restructuring note on either.
 - Public contact: email, LinkedIn, GitHub on the site. The CVs also list a
   mobile number, WhatsApp and Telegram (owner-approved, 2026-10-07).
+- Public address: `https://portfolio-almariebu.vercel.app`, open to logged-out
+  visitors. `site.url` matches it; it drives the canonical URL, sitemap,
+  robots.txt, OG image and structured data, so change it if the domain changes.
 
 ## Open
 
-- [ ] `site.url` is `https://almariebu.vercel.app`, which is not a live
-      deployment. It drives the canonical URL, sitemap, robots.txt, OG image and
-      structured data. Set it to the real public address.
-- [ ] Production is behind Vercel Authentication, so visitors see a Vercel
-      login. Turn it off for Production in Vercel → Settings → Deployment
-      Protection.
 - [ ] Case studies (`caseStudies`, 9 entries) are pending a demo site. They
       render only inside the Work panel, canonicalize to the home page and are
       not in the sitemap. Revisit once the demo exists.

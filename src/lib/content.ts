@@ -23,7 +23,7 @@ export const site = {
   github: "https://github.com/almarieeebu",
   resume: "/cv.html",
   resumeDeveloper: "/cv-developer.html",
-  url: "https://almariebu.vercel.app",
+  url: "https://portfolio-almariebu.vercel.app",
 };
 
 export const screenshotNote =
