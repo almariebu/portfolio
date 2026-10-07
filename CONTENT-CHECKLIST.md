@@ -12,7 +12,7 @@ thing as the site.
   mobile number, WhatsApp and Telegram (owner-approved, 2026-10-07).
 - Public address: `https://portfolio-almariebu.vercel.app`, open to logged-out
   visitors. `site.url` matches it; it drives the canonical URL, sitemap,
-  robots.txt, OG image and structured data, so change it if the domain changes.
+  robots.txt, OG image and structured data. The CVs link to the same address.
 
 ## Open
 
@@ -26,5 +26,7 @@ thing as the site.
 
 - Role or dates: update `experience` and the `about` paragraphs/facts in
   `content.ts`, then both CV HTML files, then regenerate both PDFs.
+- Domain: update `site.url` in `content.ts`, then the portfolio link in both CV
+  HTML files, then regenerate both PDFs.
 - Run `bash scripts/check-cv.sh public/cv.html` and
   `bash scripts/check-cv.sh public/cv-developer.html` after any CV edit.

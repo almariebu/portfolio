@@ -17,4 +17,6 @@ absent no-pm-terms 'roadmap|KPI|OKR'
 for k in Python JavaScript Frappe ERPNext 'REST APIs' MariaDB Git Linux Docker CI/CD production; do present "$k" has-keywords; done
 for t in 'Junior Web Developer' 'Mid-Senior Web Developer' 'Senior Web Developer' 'Product Owner'; do present "$t" has-progression; done
 grep -iEq '<table|<img' "$f" && bad no-tables
+url=$(sed -nE 's/^ *url: "([^"]+)".*/\1/p' "$(dirname "$0")/../src/lib/content.ts")
+grep -Fq "href=\"$url/\"" "$f" || bad "portfolio-url: missing site.url ($url)"
 exit $fail
