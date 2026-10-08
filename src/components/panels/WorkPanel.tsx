@@ -16,12 +16,12 @@ export function WorkPanel({
   return (
     <div className="flex flex-col gap-8">
       <div className="max-w-3xl">
-        <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Work</p>
+        <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Projects</p>
         <h2 className="mt-2 font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
-          Selected work
+          Professional work: school management platform (2020 to present)
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-night-ink">
-          Three projects from the school system. More of the work is below.
+          Business web application used by registrars, cashiers, finance staff, deans, and teachers. Screenshots are illustrative, not the real system.
         </p>
       </div>
 
@@ -116,7 +116,7 @@ function StudyBody({ study }: { study: CaseStudy }) {
       </section>
       <section>
         <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">
-          What I did
+          What I built
         </h4>
         <ul className="mt-2 space-y-2">
           {study.responsibility.map((item) => (

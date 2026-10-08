@@ -15,13 +15,13 @@ export function PracticePanel() {
         />
         <div>
           <p className="font-display text-sm font-semibold text-night-ink">{site.name}</p>
-          <p className="text-xs text-night-muted">Web developer · ERPNext developer</p>
+          <p className="text-xs text-night-muted">{site.roles.join(" · ")}</p>
         </div>
       </div>
 
       <PanelHeading
         eyebrow="What I do"
-        title="Web applications and ERPNext customization"
+        title="Web applications, from the interface to the database"
       />
 
       <div className="grid gap-3">

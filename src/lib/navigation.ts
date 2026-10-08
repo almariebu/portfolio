@@ -1,6 +1,6 @@
 export const detailPanels = [
   { id: "practice", label: "What I do" },
-  { id: "work", label: "Work" },
+  { id: "work", label: "Projects" },
   { id: "about", label: "About" },
   { id: "contact", label: "Contact" },
 ] as const;
