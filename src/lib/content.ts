@@ -137,6 +137,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Python", "JavaScript", "SQL"],
     image: "/work/closing.png",
     imageAlt: "Account closing form with a tellering table",
+    demo: "/demo/account-closing",
   },
   {
     slug: "student-discounts",
@@ -157,6 +158,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Python", "SQL", "Reporting"],
     image: "/work/discounts.png",
     imageAlt: "Student discount summary report",
+    demo: "/demo/student-discounts",
   },
   {
     slug: "basic-ed-enrollment",
@@ -199,6 +201,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Python", "SQL", "Linux"],
     image: "/work/migration.png",
     imageAlt: "Data migration screen for roles and files",
+    demo: "/demo/roles-and-migration",
   },
   {
     slug: "online-payments",
@@ -217,6 +220,7 @@ export const caseStudies: CaseStudy[] = [
     improvement:
       "A fee paid online lands on the student account without someone retyping it.",
     stack: ["Python", "Payment integration"],
+    demo: "/demo/online-payments",
   },
   {
     slug: "grading",
@@ -234,6 +238,7 @@ export const caseStudies: CaseStudy[] = [
     improvement:
       "Grade records, class lists, and the report show current student data.",
     stack: ["Python"],
+    demo: "/demo/grading",
   },
   {
     slug: "sms-and-email",
@@ -251,6 +256,7 @@ export const caseStudies: CaseStudy[] = [
     improvement:
       "Schools can send the billing text and the email digest without the old provider or a stuck queue.",
     stack: ["Python", "Messaging integration"],
+    demo: "/demo/sms-and-email",
   },
 ];
 
