@@ -201,3 +201,41 @@ export function Field({
 }
 
 export { fmtMoney as money } from "@/lib/demo/logic";
+
+export function DataTable({
+  head,
+  rows,
+  empty = "Nothing to show.",
+}: {
+  head: string[];
+  rows: React.ReactNode[][];
+  empty?: string;
+}) {
+  if (rows.length === 0) return <p className="text-sm text-ink-muted">{empty}</p>;
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-left text-sm">
+        <thead>
+          <tr className="border-b border-paper-line text-xs text-ink-muted">
+            {head.map((h) => (
+              <th key={h} scope="col" className="px-2 py-1.5 font-semibold">
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-paper-line">
+          {rows.map((r, i) => (
+            <tr key={i}>
+              {r.map((c, j) => (
+                <td key={j} className="px-2 py-1.5 align-middle">
+                  {c}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
