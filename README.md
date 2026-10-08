@@ -1,6 +1,6 @@
-# Almarie Bullo — Web Developer & ERP Developer
+# Almarie Bullo — Web Developer
 
-Personal portfolio for Frappe / ERPNext and web work. Live at [almariedev.com](https://almariedev.com/).
+Personal portfolio for web and software development work. Live at [almariedev.com](https://almariedev.com/).
 
 ## Stack
 

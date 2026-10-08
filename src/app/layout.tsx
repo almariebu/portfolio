@@ -23,7 +23,7 @@ const description = site.intro;
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.roles.join(" · ")}`,
+    default: `${site.name} | ${site.roles.join(" · ")}`,
     template: `%s · ${site.name}`,
   },
   description,
@@ -33,15 +33,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   keywords: [
     "Web Developer",
-    "ERPNext Developer",
-    "Frappe Framework",
-    "ERPNext",
-    "Python",
+    "Software Developer",
+    "Frontend Developer",
+    "Full-Stack Developer",
     "JavaScript",
-    "Next.js",
+    "Python",
+    "SQL",
   ],
   openGraph: {
-    title: `${site.name} — ${site.roles.join(" · ")}`,
+    title: `${site.name} | ${site.roles.join(" · ")}`,
     description,
     type: "website",
     locale: "en_US",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.roles.join(" · ")}`,
+    title: `${site.name} | ${site.roles.join(" · ")}`,
     description,
   },
   robots: {
@@ -94,8 +94,8 @@ const structuredData = {
     "Web Development",
     "JavaScript",
     "Frappe Framework",
-    "ERPNext",
     "Python",
+    "SQL",
   ],
   ...(profileUrls.length > 0 ? { sameAs: profileUrls } : {}),
 };

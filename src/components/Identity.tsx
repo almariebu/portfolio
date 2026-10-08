@@ -71,7 +71,7 @@ export function Identity({
             onClick={onWork}
             className="inline-flex min-h-10 items-center rounded-full bg-ink px-4 text-sm font-semibold text-paper transition hover:bg-gold-deep"
           >
-            See the work
+            See the projects
           </button>
           <button
             type="button"
@@ -111,7 +111,7 @@ export function Identity({
             rel="noreferrer noopener"
             className="text-ink-muted transition hover:text-ink"
           >
-            ERP CV
+            CV (ERP)
           </a>
           <a
             href={site.resumeDeveloper}
