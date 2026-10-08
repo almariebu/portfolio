@@ -81,6 +81,8 @@ export type CaseStudy = {
   stack: string[];
   image?: string;
   imageAlt?: string;
+  /** Path of an interactive browser demo for this case study. */
+  demo?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -107,6 +109,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Frappe", "Python", "JavaScript", "MariaDB"],
     image: "/work/college.png",
     imageAlt: "College matriculation form with an approval workflow",
+    demo: "/demo/college-enrollment",
   },
   {
     slug: "account-closing",
@@ -172,6 +175,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Frappe", "Python", "JavaScript", "Permissions"],
     image: "/work/bed.png",
     imageAlt: "Enrollees form used for basic education",
+    demo: "/demo/basic-ed-enrollment",
   },
   {
     slug: "roles-and-migration",

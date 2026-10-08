@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { caseStudies, screenshotNote, type CaseStudy } from "@/lib/content";
 
 export function WorkPanel({
@@ -131,6 +132,16 @@ function StudyBody({ study }: { study: CaseStudy }) {
         <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Result</h4>
         <p className="mt-2 text-sm leading-relaxed text-night-ink">{study.improvement}</p>
       </section>
+      {study.demo ? (
+        <p>
+          <Link
+            href={study.demo}
+            className="inline-flex min-h-10 items-center rounded-md bg-gold px-4 py-2 text-sm font-semibold text-night hover:bg-gold-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          >
+            Try the live demo &rarr;
+          </Link>
+        </p>
+      ) : null}
       <ul className="flex flex-wrap gap-1.5">
         {study.stack.map((tech) => (
           <li
