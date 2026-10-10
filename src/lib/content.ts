@@ -86,6 +86,39 @@ export const disciplines: {
   },
 ];
 
+export type Project = {
+  title: string;
+  problem: string;
+  built: string[];
+  result: string;
+  stack: string[];
+  liveUrl: string;
+  repoUrl: string;
+  image: string;
+  imageAlt: string;
+};
+
+export const projects: Project[] = [
+  {
+    title: "UI component kit",
+    problem:
+      "Teams that build business forms and tables need components that are consistent, keyboard accessible, and tested.",
+    built: [
+      "Button, Input, Modal, Table, and Toast components in React and TypeScript.",
+      "Accessible by default: labelled inputs, announced errors, native dialog, sortable table headers with aria-sort, polite toast region.",
+      "Responsive layout styled with Tailwind CSS, checked at phone width.",
+      "19 unit tests (Vitest) and 10 end-to-end tests (Playwright).",
+    ],
+    result:
+      "A live demo page where every component works, with tests that run on desktop and phone viewports.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vitest", "Playwright"],
+    liveUrl: "https://ui-kit-almariebu.vercel.app/",
+    repoUrl: "https://github.com/almariebu/portfolio/tree/main/ui-kit",
+    image: "/work/ui-kit.png",
+    imageAlt: "UI kit demo with buttons, an email input, a students table, and a toast",
+  },
+];
+
 export type CaseStudy = {
   slug: string;
   title: string;
