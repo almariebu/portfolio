@@ -20,12 +20,12 @@ Vitest, Playwright, GitHub Actions. Python, SQL, Git are already yours.
 - [ ] Tailwind CSS: layout, responsive, dark mode.
 - [ ] Testing: Vitest + Testing Library for components.
 - [ ] Playwright: first end-to-end test.
-- [ ] **Project 1: UI component kit** (separate repo). Buttons, inputs,
+- [x] **Project 1: UI component kit** (separate repo). Buttons, inputs,
       modal, table, toast. Responsive, keyboard accessible.
-  - [ ] Unit tests for every component.
-  - [ ] One Playwright test per key flow.
+  - [x] Unit tests for every component.
+  - [x] One Playwright test per key flow.
   - [ ] GitHub Actions runs lint + tests on every push.
-  - [ ] Live demo (Vercel) and README with screenshots.
+  - [x] Live demo (Vercel) and README with screenshots.
 
 ## Phase 2: Full-stack project (Dec to Jan, weeks 9 to 16)
 

@@ -14,7 +14,7 @@ export const site = {
   company: "Livro Systems, Inc.",
   formerCompany: "Wela School Systems",
   intro:
-    "Web developer with 5+ years of experience building business web applications: enrollment, billing, payments, and approval workflows. Python, JavaScript, and SQL.",
+    "Web developer with 5+ years of experience building business web applications: enrollment, billing, payments, and approval workflows. Python, JavaScript, SQL, and React with TypeScript and Tailwind CSS.",
   availability:
     "Open to web developer and software developer roles · Remote or hybrid · UTC+8",
   email: "almariebullo@gmail.com",
@@ -42,8 +42,16 @@ export const disciplines: {
     label: "Frontend",
     title: "Interfaces people can use",
     description:
-      "Responsive, accessible interfaces with HTML5, CSS, and JavaScript. Reusable components, clean layouts, and attention to detail.",
-    capabilities: ["HTML5", "CSS", "JavaScript", "Responsive layouts"],
+      "Responsive, accessible interfaces with HTML5, CSS, JavaScript, React, TypeScript, and Tailwind CSS. Reusable components, clean layouts, and attention to detail. See the UI kit demo.",
+    capabilities: [
+      "HTML5",
+      "CSS",
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Responsive layouts",
+    ],
   },
   {
     id: "backend",
@@ -309,9 +317,9 @@ export const about = {
     { label: "Experience", value: "Since March 2020" },
     { label: "Company", value: "Livro Systems, Inc. (formerly Wela)" },
     { label: "Now", value: "Product Owner, full-time" },
-    { label: "Frontend", value: "HTML5, CSS, JavaScript" },
+    { label: "Frontend", value: "HTML5, CSS, JavaScript, React, TypeScript, Tailwind CSS" },
     { label: "Backend", value: "Python, SQL, MariaDB, REST APIs, background jobs" },
-    { label: "Tools", value: "Git, GitHub, Linux" },
+    { label: "Tools", value: "Git, GitHub, Linux, Vitest, Playwright" },
     { label: "Also", value: "Frappe framework" },
     { label: "Hours", value: "Remote or hybrid, UTC+8" },
   ],
