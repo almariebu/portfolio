@@ -250,18 +250,33 @@ export async function buildApp(db: Db, opts: { jwtSecret: string }): Promise<Fas
   app.post("/enrollments/:id/payments", async (req) => {
     requireRole(req, "finance");
     const id = parseId((req.params as { id: string }).id);
-    const amount = ((req.body ?? {}) as { amountCents?: unknown }).amountCents;
+    const { amountCents: amount, reference } = (req.body ?? {}) as {
+      amountCents?: unknown;
+      reference?: unknown;
+    };
+    const errors: string[] = [];
     if (!Number.isInteger(amount) || (amount as number) < 1) {
-      throw new HttpError(400, "Invalid payment", ["amountCents must be a positive integer"]);
+      errors.push("amountCents must be a positive integer");
     }
+    if (typeof reference !== "string" || reference.trim() === "" || reference.length > 100) {
+      errors.push("reference is required (receipt number, up to 100 characters)");
+    }
+    if (errors.length) throw new HttpError(400, "Invalid payment", errors);
+    const ref = (reference as string).trim();
     return db.tx(async (t) => {
       const e = await lockRow(t, id);
       if (e.status === "enrolled") throw new HttpError(409, "Enrollment is locked");
+      // The same receipt reference is applied once, so a client retry is harmless.
+      const inserted = await t.query(
+        "insert into payments (enrollment_id, reference, amount_cents, created_by) values ($1,$2,$3,$4) on conflict (enrollment_id, reference) do nothing returning id",
+        [id, ref, amount, req.user.sub],
+      );
+      if (inserted.rows.length === 0) return { ...toEnrollment(e), replayed: true };
       const { rows } = await t.query<EnrollmentRow>(
         "update enrollments set paid_cents = paid_cents + $2, updated_at = now() where id = $1 returning *",
         [id, amount],
       );
-      return toEnrollment(rows[0]);
+      return { ...toEnrollment(rows[0]), replayed: false };
     });
   });
 

@@ -22,7 +22,7 @@ Project 2 of `ROADMAP.md`. Built to move into its own repository.
 | `POST /enrollments/:id/submit` | encoder | draft → dean |
 | `POST /enrollments/:id/approve` | dean, registrar, finance | advances one stage. `409` if the fee is unpaid at finance |
 | `POST /enrollments/:id/reject` | dean, registrar, finance | needs a `reason`, returns to draft |
-| `POST /enrollments/:id/payments` | finance | `{ "amountCents": 100000 }` |
+| `POST /enrollments/:id/payments` | finance | `{ "amountCents": 100000, "reference": "OR-1001" }`. The same reference is applied once, so retries are safe |
 | `GET /enrollments/:id` and `/events` | any signed-in user | |
 
 Replayed actions return `200` with `"replayed": true`.
@@ -33,6 +33,7 @@ Replayed actions return `200` with `"replayed": true`.
 src/app.ts      Fastify routes, JWT auth, one transaction per action
 src/rules.ts    pure business rules (no I/O), unit tested
 src/db.ts       small Db interface with two adapters: PGlite and pg
+src/config.ts   reads environment variables, refuses unsafe combinations
 src/migrate.ts  runs migrations/*.sql in order, records them
 migrations/     SQL schema
 ```
@@ -58,12 +59,15 @@ Demo users (`encoder@`, `dean@`, `registrar@`, `finance@demo.test`) use the
 password `demo-password`. They are created only when `SEED_DEMO=1`.
 
 With a real database: `DATABASE_URL=postgres://... JWT_SECRET=... npm start`
-(`JWT_SECRET` is required when `DATABASE_URL` is set).
+(`JWT_SECRET` is required when `DATABASE_URL` is set, and `SEED_DEMO` is refused with a real database). In demo mode the signing secret is random per start.
 
 ## Known limits
 
 - The `pg` adapter has not been run against a live PostgreSQL server by the
   author yet. The CI file does this once the folder is its own repo.
+- A delayed duplicate approve can act on a later cycle: replay is judged by current status, not a request id. After a reject and resubmit, an old retry from the same role would be treated as a fresh approval.
+- Concurrent requests are protected by row locks but not yet tested against a live server.
+- Any signed-in user can read any enrollment; any encoder can edit any draft.
 - No UI yet; the end-to-end test drives the HTTP API.
 - No login rate limiting, refresh tokens, or user management.
 - No live demo link yet.

@@ -38,8 +38,13 @@ export async function createPglite(): Promise<Db> {
 }
 
 /** A real PostgreSQL server, used when DATABASE_URL is set. */
-export function createPg(connectionString: string): Db {
-  const pool = new pg.Pool({ connectionString });
+export function createPg(
+  connectionString: string,
+  pool: pg.Pool = new pg.Pool({ connectionString }),
+): Db {
+  // An idle client can error (for example when the database restarts). Without a
+  // listener Node treats that as an uncaught exception and exits.
+  pool.on("error", (err) => console.error("idle pg client error:", err.message));
   const wrap = (q: pg.Pool | pg.PoolClient): Db => ({
     async query<T>(sql: string, params: unknown[] = []) {
       const r = await q.query(sql, params);
@@ -57,16 +62,23 @@ export function createPg(connectionString: string): Db {
     ...wrap(pool),
     async tx(fn) {
       const client = await pool.connect();
+      let failure: Error | undefined;
       try {
         await client.query("begin");
         const out = await fn(wrap(client));
         await client.query("commit");
         return out;
       } catch (err) {
-        await client.query("rollback");
+        failure = err instanceof Error ? err : new Error(String(err));
+        try {
+          await client.query("rollback");
+        } catch {
+          // Keep the original error; the client is discarded below.
+        }
         throw err;
       } finally {
-        client.release();
+        // Passing an error tells the pool to destroy this client, not reuse it.
+        client.release(failure);
       }
     },
     close: () => pool.end(),

@@ -28,7 +28,7 @@ test("an enrollment goes from draft to locked through every role", async ({ requ
   const early = await request.post(`/enrollments/${id}/approve`, { headers: finance });
   expect(early.status()).toBe(409);
 
-  await request.post(`/enrollments/${id}/payments`, { headers: finance, data: { amountCents: 250_000 } });
+  await request.post(`/enrollments/${id}/payments`, { headers: finance, data: { amountCents: 250_000, reference: "OR-E2E-1" } });
   const locked = await request.post(`/enrollments/${id}/approve`, { headers: finance });
   expect(locked.status()).toBe(200);
   expect((await locked.json()).enrollment.status).toBe("enrolled");

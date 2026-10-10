@@ -7,13 +7,13 @@ describe("migrate", () => {
   it("creates the tables and records the migration", async () => {
     const db = await createPglite();
     const applied = await migrate(db);
-    expect(applied).toEqual(["001_init.sql"]);
+    expect(applied).toEqual(["001_init.sql", "002_payments.sql"]);
     const { rows } = await db.query<{ table_name: string }>(
       "select table_name from information_schema.tables where table_schema = 'public' order by 1",
     );
     const names = rows.map((r) => r.table_name);
     expect(names).toEqual(
-      expect.arrayContaining(["users", "enrollments", "enrollment_events", "schema_migrations"]),
+      expect.arrayContaining(["users", "enrollments", "enrollment_events", "payments", "schema_migrations"]),
     );
   });
 

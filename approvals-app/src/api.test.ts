@@ -25,6 +25,8 @@ async function login(email: string) {
 }
 
 const auth = (token: string) => ({ authorization: `Bearer ${token}` });
+let refCounter = 0;
+const payment = (amountCents: number) => ({ amountCents, reference: `R-${++refCounter}` });
 const input = { studentName: "Ana Cruz", units: 21, feeCents: 100_000 };
 
 async function createDraft(token: string, body: object = input) {
@@ -118,7 +120,7 @@ describe("approval workflow", () => {
       method: "POST",
       url: `/enrollments/${id}/payments`,
       headers: auth(finance),
-      payload: { amountCents: 100_000 },
+      payload: payment(100_000),
     });
     expect(pay.json().paidCents).toBe(100_000);
     const done = await app.inject({ method: "POST", url: `/enrollments/${id}/approve`, headers: auth(finance) });
@@ -139,7 +141,7 @@ describe("approval workflow", () => {
     const blocked = await app.inject({ method: "POST", url: `/enrollments/${id}/approve`, headers: auth(finance) });
     expect(blocked.statusCode).toBe(409);
     expect(blocked.json().error).toMatch(/payment/i);
-    await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: { amountCents: 99_999 } });
+    await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: payment(99_999) });
     const stillBlocked = await app.inject({ method: "POST", url: `/enrollments/${id}/approve`, headers: auth(finance) });
     expect(stillBlocked.statusCode).toBe(409);
     const status = await app.inject({ method: "GET", url: `/enrollments/${id}`, headers: auth(finance) });
@@ -167,7 +169,7 @@ describe("approval workflow", () => {
 
   it("never wipes a locked enrollment when finance re-runs", async () => {
     const { id, finance } = await toFinance();
-    await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: { amountCents: 100_000 } });
+    await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: payment(100_000) });
     await app.inject({ method: "POST", url: `/enrollments/${id}/approve`, headers: auth(finance) });
     const before = await eventCount(id);
     const again = await app.inject({ method: "POST", url: `/enrollments/${id}/approve`, headers: auth(finance) });
@@ -178,11 +180,11 @@ describe("approval workflow", () => {
 
   it("blocks edits and payments once enrolled", async () => {
     const { id, encoder, finance } = await toFinance();
-    await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: { amountCents: 100_000 } });
+    await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: payment(100_000) });
     await app.inject({ method: "POST", url: `/enrollments/${id}/approve`, headers: auth(finance) });
     const edit = await app.inject({ method: "PATCH", url: `/enrollments/${id}`, headers: auth(encoder), payload: { units: 3 } });
     expect(edit.statusCode).toBe(409);
-    const pay = await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: { amountCents: 5 } });
+    const pay = await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: payment(5) });
     expect(pay.statusCode).toBe(409);
   });
 
@@ -198,6 +200,26 @@ describe("approval workflow", () => {
     const edit = await app.inject({ method: "PATCH", url: `/enrollments/${id}`, headers: auth(encoder), payload: { units: 18 } });
     expect(edit.statusCode).toBe(200);
     expect(edit.json().units).toBe(18);
+  });
+
+  it("does not add a retried payment twice (same reference)", async () => {
+    const { id, finance } = await toFinance();
+    const body = { amountCents: 60_000, reference: "OR-1001" };
+    const first = await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: body });
+    const retry = await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: body });
+    expect(first.json().paidCents).toBe(60_000);
+    expect(retry.statusCode).toBe(200);
+    expect(retry.json()).toMatchObject({ paidCents: 60_000, replayed: true });
+    const blocked = await app.inject({ method: "POST", url: `/enrollments/${id}/approve`, headers: auth(finance) });
+    expect(blocked.statusCode).toBe(409);
+  });
+
+  it("requires a payment reference", async () => {
+    const { id, finance } = await toFinance();
+    for (const reference of [undefined, "", "  ", 5]) {
+      const res = await app.inject({ method: "POST", url: `/enrollments/${id}/payments`, headers: auth(finance), payload: { amountCents: 100, reference } });
+      expect(res.statusCode).toBe(400);
+    }
   });
 
   it("validates payments", async () => {
