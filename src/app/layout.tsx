@@ -1,20 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Source_Sans_3 } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/lib/content";
 import "./globals.css";
 
-const sourceSans = Source_Sans_3({
+// Self-hosted (latin subset, variable fonts, SIL OFL) instead of next/font/google:
+// Turbopack fails to build when Google returns font URLs in the
+// fonts.gstatic.com/l/font?kit=... form, which depends on the developer's network.
+const sourceSans = localFont({
+  src: "./fonts/SourceSans3-latin.woff2",
   variable: "--font-source",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
   display: "swap",
 });
 
-const sora = Sora({
+const sora = localFont({
+  src: "./fonts/Sora-latin.woff2",
   variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: "500 700",
   display: "swap",
 });
 
@@ -37,6 +40,9 @@ export const metadata: Metadata = {
     "Frontend Developer",
     "Full-Stack Developer",
     "JavaScript",
+    "TypeScript",
+    "React",
+    "Tailwind CSS",
     "Python",
     "SQL",
   ],

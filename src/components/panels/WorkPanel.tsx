@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { caseStudies, screenshotNote, type CaseStudy } from "@/lib/content";
+import { caseStudies, projects, screenshotNote, type CaseStudy, type Project } from "@/lib/content";
 
 export function WorkPanel({
   slug,
@@ -16,8 +16,19 @@ export function WorkPanel({
 
   return (
     <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
+        <div className="max-w-3xl">
+          <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Projects</p>
+          <h2 className="mt-2 font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
+            Recent projects
+          </h2>
+        </div>
+        {projects.map((project) => (
+          <ProjectArticle key={project.title} project={project} />
+        ))}
+      </div>
+
       <div className="max-w-3xl">
-        <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Projects</p>
         <h2 className="mt-2 font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
           Professional work: school management platform (2020 to present)
         </h2>
@@ -69,6 +80,76 @@ export function WorkPanel({
         </div>
       </div>
     </div>
+  );
+}
+
+function ProjectArticle({ project }: { project: Project }) {
+  return (
+    <article className="rounded-2xl border border-night-line bg-night-soft">
+      <figure className="border-b border-night-line">
+        <Image
+          src={project.image}
+          alt={project.imageAlt}
+          width={1000}
+          height={1100}
+          className="h-44 w-full object-cover object-left-top sm:h-52"
+        />
+      </figure>
+      <div className="space-y-4 px-4 py-4 sm:px-5 sm:py-5">
+        <h3 className="font-display text-xl font-semibold leading-snug tracking-tight text-night-ink">
+          {project.title}
+        </h3>
+        <section>
+          <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Problem</h4>
+          <p className="mt-2 text-sm leading-relaxed text-night-ink">{project.problem}</p>
+        </section>
+        <section>
+          <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">
+            What I built
+          </h4>
+          <ul className="mt-2 space-y-2">
+            {project.built.map((item) => (
+              <li key={item} className="flex gap-3 text-sm leading-relaxed text-night-ink">
+                <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-gold" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section>
+          <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Result</h4>
+          <p className="mt-2 text-sm leading-relaxed text-night-ink">{project.result}</p>
+        </section>
+        <ul className="flex flex-wrap gap-1.5">
+          {project.stack.map((tech) => (
+            <li
+              key={tech}
+              className="rounded-full border border-night-line px-3 py-1 text-sm text-night-ink"
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex min-h-10 items-center rounded-full bg-gold px-4 text-sm font-bold text-night transition hover:bg-gold-bright"
+          >
+            Live demo
+          </a>
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex min-h-10 items-center rounded-full border border-night-line px-4 text-sm font-semibold text-night-ink transition hover:border-gold/40 hover:text-gold"
+          >
+            GitHub repo
+          </a>
+        </div>
+      </div>
+    </article>
   );
 }
 

@@ -3,6 +3,12 @@
 Small React + TypeScript + Tailwind component kit with tests. Project 1 of
 `ROADMAP.md`. Built to move into its own repository.
 
+**Live demo:** https://ui-kit-almariebu.vercel.app
+
+![Desktop](docs/desktop.png)
+
+<img src="docs/mobile.png" alt="Mobile layout" width="240">
+
 ## Components
 
 | Component | Notes |
@@ -34,6 +40,6 @@ npm run e2e        # Playwright, desktop + phone width
 
 ## Before publishing
 
-- [ ] Add screenshots to this README.
-- [ ] Deploy the demo (Vercel) and add the live link.
-- [ ] Only then list React, TypeScript, and Tailwind on the portfolio and CVs.
+- [x] Add screenshots to this README.
+- [x] Deploy the demo (Vercel) and add the live link.
+- [x] List React, TypeScript, and Tailwind on the portfolio and CVs.
