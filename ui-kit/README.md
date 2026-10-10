@@ -10,8 +10,10 @@ Small React + TypeScript + Tailwind component kit with tests. Project 1 of
 | `Button` | primary / secondary / danger, loading state (`aria-busy`) |
 | `Input` | label linked by id, error announced with `role="alert"` |
 | `Modal` | native `<dialog>`: focus trap, Escape to close |
+| `Table` | typed columns, sortable headers with `aria-sort`, empty state |
+| `Toast` | `ToastProvider` + `useToast()`, polite live region, auto-dismiss |
 
-To add next: Table, Toast, Select, Tabs.
+To add next: Select, Tabs.
 
 ## Run
 

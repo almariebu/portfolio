@@ -25,3 +25,18 @@ test("no horizontal scroll at phone width", async ({ page }) => {
   );
   expect(overflow).toBe(false);
 });
+
+test("table sorts by a column header", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Units" }).click();
+  const first = page.getByRole("row").nth(1);
+  await expect(first).toContainText("Abad");
+});
+
+test("toast appears and can be dismissed", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Show success" }).click();
+  await expect(page.getByRole("status")).toContainText("Saved.");
+  await page.getByRole("button", { name: "Dismiss" }).click();
+  await expect(page.getByRole("status")).not.toContainText("Saved.");
+});
