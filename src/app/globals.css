@@ -235,3 +235,22 @@ body {
     animation: none;
   }
 }
+
+/* Grade report demo: print only the report, on a clean page. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .grade-report,
+  .grade-report * {
+    visibility: visible;
+  }
+  .grade-report {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #000;
+    background: #fff;
+  }
+}
