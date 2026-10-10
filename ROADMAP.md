@@ -13,13 +13,25 @@ TypeScript, or Tailwind on the site or CVs until a live project uses them.
 TypeScript, React, Tailwind CSS, Node (or Python + FastAPI), PostgreSQL,
 Vitest, Playwright, GitHub Actions. Python, SQL, Git are already yours.
 
-## Phase 1: Foundations (Oct to Nov, weeks 1 to 8)
+## Phase 1: Foundations (Oct to early Dec, 8 weeks, about 10 hours a week)
 
-- [ ] TypeScript basics: types, generics, narrowing, async.
-- [ ] React: components, state, effects, forms, accessibility.
-- [ ] Tailwind CSS: layout, responsive, dark mode.
-- [ ] Testing: Vitest + Testing Library for components.
-- [ ] Playwright: first end-to-end test.
+Study notes and lesson plans live in `learn/`. Each lesson: read the docs, watch
+one video, build a commit, write a teach-back note. About 1 hour of reading or
+watching for every 2 hours of building. A week with no commit is not done.
+Testing is learned early and used while building, not added at the end.
+
+- [ ] Weeks 1 to 2 (12 to 25 Oct): TypeScript basics (types, narrowing, generics,
+      async) and Vitest basics. Build: type the approvals-app API and fix its
+      deferred review issues test-first. (`learn/01-typescript-vitest.md`)
+- [ ] Weeks 3 to 5 (26 Oct to 15 Nov): React (components, state, effects, forms,
+      accessibility) with Testing Library. Build: an accessible form in the UI kit,
+      tested as you go. (`learn/02-react-testing-library.md`)
+- [ ] Week 6 (16 to 22 Nov): Tailwind CSS (layout, responsive, dark mode). Build:
+      dark mode and a responsive pass on the UI kit. (`learn/03-tailwind.md`)
+- [ ] Week 7 (23 to 29 Nov): Playwright. Build: an end-to-end test of the form
+      flow. (`learn/04-playwright.md`)
+- [ ] Week 8 (30 Nov to 6 Dec): buffer. Catch up and tidy the teach-back notes.
+      If two weeks were missed, cut Tailwind depth first, not testing.
 - [x] **Project 1: UI component kit** (separate repo). Buttons, inputs,
       modal, table, toast. Responsive, keyboard accessible.
   - [x] Unit tests for every component.
