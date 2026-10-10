@@ -31,5 +31,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "ui-kit"]
+  "exclude": ["node_modules", "ui-kit", "approvals-app"]
 }

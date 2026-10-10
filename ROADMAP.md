@@ -29,15 +29,15 @@ Vitest, Playwright, GitHub Actions. Python, SQL, Git are already yours.
 
 ## Phase 2: Full-stack project (Dec to Jan, weeks 9 to 16)
 
-- [ ] **Project 2: approvals app** (separate repo). A simplified version of
+- [ ] **Project 2: approvals app** (built in `approvals-app/`, move to its own repo). A simplified version of
       your enrollment workflow: Draft, reviewer, approver, finance.
-  - [ ] Login and roles (permissions per role).
-  - [ ] PostgreSQL schema and migrations.
-  - [ ] REST API with validation rules (limits, payment check).
-  - [ ] Safe re-runs (idempotent actions).
-  - [ ] API tests + Playwright tests for the full workflow.
+  - [x] Login and roles (permissions per role).
+  - [x] PostgreSQL schema and migrations.
+  - [x] REST API with validation rules (limits, payment check).
+  - [x] Safe re-runs (idempotent actions).
+  - [x] API tests + Playwright tests for the full workflow (HTTP level, no UI yet).
   - [ ] CI, live demo, README with architecture notes.
-- [ ] Write a short test plan for it (what you test and why).
+- [x] Write a short test plan for it (`approvals-app/docs/TEST-PLAN.md`).
 
 ## Phase 3: AI feature + evals (late Jan to Feb, weeks 16 to 20)
 
