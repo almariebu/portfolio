@@ -218,14 +218,26 @@ function StudyBody({ study }: { study: CaseStudy }) {
         <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Result</h4>
         <p className="mt-2 text-sm leading-relaxed text-night-ink">{study.improvement}</p>
       </section>
-      {study.demo ? (
-        <p>
-          <Link
-            href={study.demo}
-            className="inline-flex min-h-10 items-center rounded-md bg-gold px-4 py-2 text-sm font-semibold text-night hover:bg-gold-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-          >
-            Try the live demo &rarr;
-          </Link>
+      {study.demo || study.sourceUrl ? (
+        <p className="flex flex-wrap gap-2">
+          {study.demo ? (
+            <Link
+              href={study.demo}
+              className="inline-flex min-h-10 items-center rounded-md bg-gold px-4 py-2 text-sm font-semibold text-night hover:bg-gold-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            >
+              Try the live demo &rarr;
+            </Link>
+          ) : null}
+          {study.sourceUrl ? (
+            <a
+              href={study.sourceUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex min-h-10 items-center rounded-md border border-night-line px-4 py-2 text-sm font-semibold text-night-ink hover:border-gold/40 hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            >
+              Source on GitHub &rarr;
+            </a>
+          ) : null}
         </p>
       ) : null}
       <ul className="flex flex-wrap gap-1.5">
