@@ -92,13 +92,28 @@ export type Project = {
   built: string[];
   result: string;
   stack: string[];
-  liveUrl: string;
+  liveUrl?: string;
   repoUrl: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export const projects: Project[] = [
+  {
+    title: "Frappe contract tracker",
+    problem:
+      "A freelancer needs to know which quotes are approved, what has been paid, and who still owes money.",
+    built: [
+      "A Frappe 15 app with Client, Contract, Contract Item, and Payment doctypes. Totals, paid amount, and balance are calculated on save.",
+      "Draft, Approved, and Done workflow. Only the Freelance Owner can approve, and only when the total is above zero.",
+      "Payment checks: a payment needs an approved contract and cannot be more than the balance. Submitting it updates the contract balance.",
+      "Owner and assistant roles, an Unpaid Contracts report, a sample data loader, and 11 unit tests for the business logic.",
+    ],
+    result:
+      "The Unpaid Contracts report lists only approved or done contracts that still have a balance. Draft quotes and paid contracts stay off it.",
+    stack: ["Python", "Frappe", "JavaScript", "MariaDB"],
+    repoUrl: "https://github.com/almariebu/frappe-contract-tracker",
+  },
   {
     title: "UI component kit",
     problem:
