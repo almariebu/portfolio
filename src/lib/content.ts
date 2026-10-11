@@ -148,7 +148,11 @@ export type CaseStudy = {
   imageAlt?: string;
   /** Path of an interactive browser demo for this case study. */
   demo?: string;
+  /** Where this case study is built as real Frappe code (a section of the school_demo README). */
+  sourceUrl?: string;
 };
+
+const schoolDemo = (anchor: string) => `https://github.com/almariebu/school_demo#${anchor}`;
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -172,6 +176,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/work/college.png",
     imageAlt: "College matriculation form with an approval workflow",
     demo: "/demo/college-enrollment",
+    sourceUrl: schoolDemo("case-study-1-college-admission-and-enrollment"),
   },
   {
     slug: "account-closing",
@@ -194,6 +199,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/work/closing.png",
     imageAlt: "Account closing form with a tellering table",
     demo: "/demo/account-closing",
+    sourceUrl: schoolDemo("case-study-5-account-closing-and-cashiering"),
   },
   {
     slug: "student-discounts",
@@ -215,6 +221,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/work/discounts.png",
     imageAlt: "Student discount summary report",
     demo: "/demo/student-discounts",
+    sourceUrl: schoolDemo("case-study-6-student-discounts"),
   },
   {
     slug: "erp-livro",
@@ -253,6 +260,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/work/bed.png",
     imageAlt: "Enrollees form used for basic education",
     demo: "/demo/basic-ed-enrollment",
+    sourceUrl: schoolDemo("case-study-2-basic-education-enrollment"),
   },
   {
     slug: "roles-and-migration",
@@ -274,6 +282,7 @@ export const caseStudies: CaseStudy[] = [
     image: "/work/migration.png",
     imageAlt: "Data migration screen for roles and files",
     demo: "/demo/roles-and-migration",
+    sourceUrl: schoolDemo("case-study-8-roles-and-data-migration"),
   },
   {
     slug: "online-payments",
@@ -293,6 +302,7 @@ export const caseStudies: CaseStudy[] = [
       "A fee paid online lands on the student account without someone retyping it.",
     stack: ["Frappe", "Python", "Payment integration"],
     demo: "/demo/online-payments",
+    sourceUrl: schoolDemo("case-study-3-online-payments"),
   },
   {
     slug: "grading",
@@ -311,6 +321,7 @@ export const caseStudies: CaseStudy[] = [
       "Grade records, class lists, and the report show current student data.",
     stack: ["Frappe", "Python"],
     demo: "/demo/grading",
+    sourceUrl: schoolDemo("case-study-7-grading"),
   },
   {
     slug: "sms-and-email",
@@ -329,6 +340,7 @@ export const caseStudies: CaseStudy[] = [
       "Schools can send the billing text and the email digest without the old provider or a stuck queue.",
     stack: ["Frappe", "Python", "Messaging integration"],
     demo: "/demo/sms-and-email",
+    sourceUrl: schoolDemo("case-study-4-sms-and-email-notifications"),
   },
 ];
 
