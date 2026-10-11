@@ -72,7 +72,7 @@ export function WorkPanel({
       <div className="flex flex-col gap-4">
         <div className="max-w-3xl">
           <h2 className="font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
-            Other web projects: React, TypeScript, Tailwind CSS
+            Other projects: Frappe, React, TypeScript, Tailwind CSS
           </h2>
         </div>
         {projects.map((project) => (
@@ -87,15 +87,17 @@ export function WorkPanel({
 function ProjectArticle({ project }: { project: Project }) {
   return (
     <article className="rounded-2xl border border-night-line bg-night-soft">
-      <figure className="border-b border-night-line">
-        <Image
-          src={project.image}
-          alt={project.imageAlt}
-          width={1000}
-          height={1100}
-          className="h-44 w-full object-cover object-left-top sm:h-52"
-        />
-      </figure>
+      {project.image ? (
+        <figure className="border-b border-night-line">
+          <Image
+            src={project.image}
+            alt={project.imageAlt ?? ""}
+            width={1000}
+            height={1100}
+            className="h-44 w-full object-cover object-left-top sm:h-52"
+          />
+        </figure>
+      ) : null}
       <div className="space-y-4 px-4 py-4 sm:px-5 sm:py-5">
         <h3 className="font-display text-xl font-semibold leading-snug tracking-tight text-night-ink">
           {project.title}
@@ -132,14 +134,16 @@ function ProjectArticle({ project }: { project: Project }) {
           ))}
         </ul>
         <div className="flex flex-wrap gap-2">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="inline-flex min-h-10 items-center rounded-full bg-gold px-4 text-sm font-bold text-night transition hover:bg-gold-bright"
-          >
-            Live demo
-          </a>
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex min-h-10 items-center rounded-full bg-gold px-4 text-sm font-bold text-night transition hover:bg-gold-bright"
+            >
+              Live demo
+            </a>
+          ) : null}
           <a
             href={project.repoUrl}
             target="_blank"
