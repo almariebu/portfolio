@@ -16,24 +16,13 @@ export function WorkPanel({
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-4">
-        <div className="max-w-3xl">
-          <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Projects</p>
-          <h2 className="mt-2 font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
-            Recent projects
-          </h2>
-        </div>
-        {projects.map((project) => (
-          <ProjectArticle key={project.title} project={project} />
-        ))}
-      </div>
-
       <div className="max-w-3xl">
+        <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Projects</p>
         <h2 className="mt-2 font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
-          Professional work: school management platform (2020 to present)
+          Professional work: Frappe / ERPNext business systems (2020 to present)
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-night-ink">
-          Business web application used by registrars, cashiers, finance staff, deans, and teachers. Screenshots are illustrative, not the real system.
+          A school management platform and ERP Livro, built on Frappe and ERPNext and used by registrars, cashiers, finance staff, deans, teachers, and employees. Screenshots are illustrative, not the real system.
         </p>
       </div>
 
@@ -79,6 +68,18 @@ export function WorkPanel({
           ))}
         </div>
       </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="max-w-3xl">
+          <h2 className="font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
+            Other web projects: React, TypeScript, Tailwind CSS
+          </h2>
+        </div>
+        {projects.map((project) => (
+          <ProjectArticle key={project.title} project={project} />
+        ))}
+      </div>
+
     </div>
   );
 }

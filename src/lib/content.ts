@@ -153,7 +153,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     improvement:
       "A student moves from application to a locked enrollment in one system. Payments and approvals are checked on the form, not over email.",
-    stack: ["Python", "JavaScript", "MariaDB"],
+    stack: ["Frappe", "Python", "JavaScript", "MariaDB"],
     image: "/work/college.png",
     imageAlt: "College matriculation form with an approval workflow",
     demo: "/demo/college-enrollment",
@@ -175,7 +175,7 @@ export const caseStudies: CaseStudy[] = [
       "Penalty dates fixed so a penalty is due on the date itself.",
     ],
     improvement: "Cashiers can close accounts and post payments, including overpayments.",
-    stack: ["Python", "JavaScript", "SQL"],
+    stack: ["Frappe", "Python", "JavaScript", "SQL"],
     image: "/work/closing.png",
     imageAlt: "Account closing form with a tellering table",
     demo: "/demo/account-closing",
@@ -196,10 +196,26 @@ export const caseStudies: CaseStudy[] = [
     ],
     improvement:
       "Finance can see who received a discount and apply a batch from one screen, without rebuilding numbers in a spreadsheet.",
-    stack: ["Python", "SQL", "Reporting"],
+    stack: ["Frappe", "Python", "SQL", "Reporting"],
     image: "/work/discounts.png",
     imageAlt: "Student discount summary report",
     demo: "/demo/student-discounts",
+  },
+  {
+    slug: "erp-livro",
+    title: "ERP Livro: employee lifecycle and access",
+    category: "Internal ERP",
+    summary:
+      "Employee onboarding, offboarding, and access requests in the internal ERP.",
+    featured: true,
+    problem:
+      "Employee onboarding, offboarding, and user access requests needed to run in the internal ERP.",
+    responsibility: [
+      "Develop and maintain features for employee onboarding, offboarding, and user access requests.",
+    ],
+    improvement:
+      "Onboarding, offboarding, and access requests are handled in ERP Livro.",
+    stack: ["Frappe", "ERPNext", "Python"],
   },
   {
     slug: "basic-ed-enrollment",
@@ -218,7 +234,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     improvement:
       "Registrars can enroll, continue, and withdraw students without duplicate rows.",
-    stack: ["Python", "JavaScript", "Permissions"],
+    stack: ["Frappe", "Python", "JavaScript", "Permissions"],
     image: "/work/bed.png",
     imageAlt: "Enrollees form used for basic education",
     demo: "/demo/basic-ed-enrollment",
@@ -239,7 +255,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     improvement:
       "A migrated site opens with usable roles, mapped fees, and a way to recover attachments.",
-    stack: ["Python", "SQL", "Linux"],
+    stack: ["Frappe", "Python", "SQL", "Linux"],
     image: "/work/migration.png",
     imageAlt: "Data migration screen for roles and files",
     demo: "/demo/roles-and-migration",
@@ -260,7 +276,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     improvement:
       "A fee paid online lands on the student account without someone retyping it.",
-    stack: ["Python", "Payment integration"],
+    stack: ["Frappe", "Python", "Payment integration"],
     demo: "/demo/online-payments",
   },
   {
@@ -278,7 +294,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     improvement:
       "Grade records, class lists, and the report show current student data.",
-    stack: ["Python"],
+    stack: ["Frappe", "Python"],
     demo: "/demo/grading",
   },
   {
@@ -296,7 +312,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     improvement:
       "Schools can send the billing text and the email digest without the old provider or a stuck queue.",
-    stack: ["Python", "Messaging integration"],
+    stack: ["Frappe", "Python", "Messaging integration"],
     demo: "/demo/sms-and-email",
   },
 ];

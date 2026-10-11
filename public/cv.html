@@ -110,7 +110,7 @@
   <main class="sheet">
     <header>
       <h1>Almarie Bullo</h1>
-      <p class="title">Web Developer | Python | JavaScript | TypeScript | React | Frappe &amp; ERPNext</p>
+      <p class="title">Frappe / ERPNext Developer | Python &amp; API Integrations | Business Systems</p>
       <p class="contact">
         <a href="mailto:almariebullo@gmail.com">almariebullo@gmail.com</a> ·
         Mobile +63 905 964 8728 · WhatsApp · Telegram @almariebu
@@ -122,23 +122,22 @@
       <p class="contact">
         Portfolio: <a style="white-space: nowrap;" href="https://portfolio-almariebu.vercel.app/">portfolio-almariebu.vercel.app</a>
       </p>
-      <p class="contact">Philippine Time (UTC+8) · Open to web developer and software developer roles · Remote or hybrid</p>
+      <p class="contact">Philippine Time (UTC+8) · Open to remote Frappe / ERPNext and Python developer roles</p>
     </header>
 
     <section>
       <h2>Professional Summary</h2>
-      <p>Web developer with 5+ years of experience building and maintaining business web applications and ERP systems using Python, JavaScript, SQL, Frappe, and ERPNext. Hands-on experience across business-critical workflows including admission, enrollment, tellering, billing, payment allocation, grading, employee onboarding and offboarding, and user access management. Career progression from junior to senior development, now owning the school management system and ERP Livro product. Product ownership experience adds strength in translating school business processes into delivered system features and coordinating delivery with development teams.</p>
+      <p>Frappe / ERPNext developer with 5+ years of experience building and maintaining school management and ERP systems in Python, JavaScript, and MariaDB. Hands-on across enrollment, billing, payments, grading, and employee access workflows, including payment, SMS, and email integrations on live production sites. Progressed from Junior to Senior Web Developer and now works as Product Owner on the same systems while continuing to write and ship code.</p>
     </section>
 
     <section class="skills">
       <h2>Core Technical Skills</h2>
       <p><strong>ERP &amp; Frameworks:</strong> Frappe Framework, ERPNext, ERP Livro, Role Permissions, User Access Management</p>
-      <p><strong>Programming:</strong> Python, JavaScript, TypeScript, React, Tailwind CSS</p>
+      <p><strong>Programming:</strong> Python, JavaScript, SQL</p>
       <p><strong>Databases:</strong> MariaDB</p>
+      <p><strong>APIs &amp; Integrations:</strong> REST APIs, Online Payments, SMS Billing Gateway Integration, Email Notifications</p>
       <p><strong>DevOps &amp; Infrastructure:</strong> Linux, Docker, Git, CI/CD</p>
-      <p><strong>APIs &amp; Integrations:</strong> REST APIs, Online Payments, SMS Billing Gateway Integration</p>
-      <p><strong>Business Systems:</strong> Admission, Pre-Enrollment, Enrollment, Matriculation, Grading, Grade Slips, Tellering, Billing, Fee Allocation, Payment Allocation, Discounts, Statements of Account, Employee Onboarding and Offboarding</p>
-      <p><strong>Product &amp; Delivery:</strong> Product Ownership, Requirements Analysis, Business Process Understanding, Stakeholder Coordination, Feature Delivery</p>
+      <p><strong>Also:</strong> React, TypeScript, Tailwind CSS (see portfolio demo); Product Ownership, Requirements Analysis</p>
     </section>
 
     <section>
@@ -148,12 +147,11 @@
         <h3>Product Owner</h3>
         <p class="when">Livro Systems, Inc. | January 2026 – Present</p>
         <ul>
-          <li>Own the school management system and ERP Livro, driving continued feature delivery with the development team.</li>
+          <li><strong>Hands-on development:</strong> develop and maintain features in Python, JavaScript, and Frappe on the school management system and ERP Livro.</li>
+          <li>Maintain online enrollment forms and payment allocation logic, and deliver updates to enrollment status, tellering, billing, and SMS notifications.</li>
           <li>Develop and maintain ERP Livro features for employee onboarding, employee offboarding, and user access requests.</li>
-          <li>Maintain online enrollment forms and payment allocation logic, enabling schools to enroll students and apply payments directly in the system.</li>
-          <li>Delivered updates to enrollment status, tellering, billing, and SMS notifications sent from the school management system.</li>
           <li>Updated the SMS billing gateway from Smart to Globe so schools can continue sending billing notifications.</li>
-          <li>Apply development background to translate school enrollment, billing, and payment processes into deliverable system updates.</li>
+          <li><strong>Product ownership:</strong> own priorities and delivery for both systems, turning school enrollment, billing, and payment processes into system updates with the development team.</li>
         </ul>
       </div>
 
@@ -194,24 +192,36 @@
     </section>
 
     <section>
-      <h2>Project / System Experience</h2>
+      <h2>Selected Projects</h2>
       <div class="system">
-        <h3>School Management System: Admission and Enrollment</h3>
-        <p>Online admission and enrollment forms, pre-enrollment, and enrollment status for basic education and college.</p>
+        <h3>College Admission and Enrollment (School Management System)</h3>
+        <p><strong>Problem:</strong> Enrollment was split across the application, subject list, fees, and approvals, with no single path from applicant to enrolled student.</p>
+        <p><strong>My contribution:</strong> Built three connected forms (applicant, subject-and-fee, enrolled student), a four-stage approval workflow (Draft, dean, registrar, finance), unit-limit and term-fee validation, and a payment check before enrollment is locked. Re-running enrollment never overwrites an enrolled student.</p>
+        <p><strong>Technologies:</strong> Frappe, Python, JavaScript, MariaDB</p>
+        <p><strong>Result:</strong> A student moves from application to a locked enrollment in one system, with payments and approvals checked on the form instead of over email.</p>
       </div>
       <div class="system">
-        <h3>School Management System: Billing and Payments</h3>
-        <p>Tellering, fee allocation, payment allocation, payment status, matriculation, discounts, ledger adjustments, statements of account, online payments, and SMS billing notifications.</p>
+        <h3>Account Closing and Cashiering</h3>
+        <p><strong>Problem:</strong> At the end of each term, cashiers could not close student accounts or post payments, which stopped the cashier desk.</p>
+        <p><strong>My contribution:</strong> Made account closing run in the background and build student ledgers, added clear on-screen messages when a closing cannot start, updated down payment and reconciliation handling, kept overpayments on the student ledger, and fixed penalty due dates.</p>
+        <p><strong>Technologies:</strong> Frappe, Python, JavaScript, SQL</p>
+        <p><strong>Result:</strong> Cashiers can close accounts and post payments, including overpayments.</p>
       </div>
       <div class="system">
-        <h3>School Management System: Grading</h3>
-        <p>Grading rules and grade slip generation for issuing student results.</p>
+        <h3>Online Payments and SMS / Email Integrations</h3>
+        <p><strong>Problem:</strong> Staff retyped online fee payments onto student accounts, billing texts used an outdated SMS provider, and some email digests were stuck unsent.</p>
+        <p><strong>My contribution:</strong> Pulled online payments into school billing and allocated them to the student’s fees, read payment links from school settings instead of hardcoded addresses, moved billing texts from Smart to Globe, and routed email digests through the default email account.</p>
+        <p><strong>Technologies:</strong> Frappe, Python, REST APIs, payment and messaging integrations</p>
+        <p><strong>Result:</strong> Online payments land on the student account without retyping, and billing texts and email digests go out on the current sender.</p>
       </div>
       <div class="system">
         <h3>ERP Livro: Employee Lifecycle and Access Management</h3>
-        <p>Employee onboarding, employee offboarding, user access requests, and role permissions.</p>
+        <p><strong>Problem:</strong> Employee onboarding, offboarding, and access requests needed to run in the internal ERP.</p>
+        <p><strong>My contribution:</strong> Develop and maintain these features.</p>
+        <p><strong>Technologies:</strong> Frappe, ERPNext, Python</p>
+        <p><strong>Result:</strong> All three are handled in ERP Livro.</p>
       </div>
-      <p style="margin-top:8px"><strong>Technologies:</strong> Frappe, ERPNext, Python, JavaScript, REST APIs, MariaDB, Git, Linux, Docker, CI/CD</p>
+      <p style="margin-top:8px"><strong>Also built:</strong> discount batches and report, basic education enrollment fixes, roles and data migration, grading fixes.</p>
     </section>
   </main>
 </body>
