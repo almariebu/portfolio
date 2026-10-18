@@ -14,7 +14,7 @@ export const site = {
   company: "Livro Systems, Inc.",
   formerCompany: "Wela School Systems",
   intro:
-    "Web developer with 5+ years of experience building business web applications: enrollment, billing, payments, and approval workflows. Python, JavaScript, SQL, and React with TypeScript and Tailwind CSS.",
+    "Web developer with 6+years of experience building business web applications: enrollment, billing, payments, and approval workflows. Python, JavaScript, SQL, and React with TypeScript and Tailwind CSS.",
   availability:
     "Open to web developer and software developer roles · Remote or hybrid · UTC+8",
   email: "almariebullo@gmail.com",
@@ -385,7 +385,7 @@ export const about = {
   eyebrow: "About",
   title: "Web developer since 2020",
   paragraphs: [
-    "I'm a web developer with 5+ years of experience building and maintaining business applications for schools: enrollment, billing, payments, grading, and internal workflows. Most of that work was on the Frappe framework with Python, JavaScript, and SQL.",
+    "I'm a web developer with 6+years of experience building and maintaining business applications for schools: enrollment, billing, payments, grading, and internal workflows. Most of that work was on the Frappe framework with Python, JavaScript, and SQL.",
     "I'm now the Product Owner in Product Development at Livro Systems, Inc., formerly Wela School Systems, where I started as a web developer in March 2020.",
     "I enjoy turning unclear requirements into software that people can rely on, and I care about clean code, small details, and clear communication.",
   ],
