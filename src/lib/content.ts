@@ -23,8 +23,7 @@ export const site = {
   email: "almariebullo@gmail.com",
   linkedin: "https://www.linkedin.com/in/almarie-alim-bullo/",
   github: "https://github.com/almariebu",
-  resume: "/cv.html",
-  resumeDeveloper: "/cv-developer.html",
+  resume: "/cv-developer.html",
   url: "https://portfolio-almariebu.vercel.app",
 };
 
