@@ -1,6 +1,9 @@
 /**
- * Site copy. Positioned as a general web / software developer. Do not list
- * React, TypeScript, or Tailwind until a live project uses them.
+ * Site copy. Positioned as an IT professional with a web development
+ * foundation, open to Web Developer, Product Owner, and Quality Assurance
+ * roles. Frappe/ERPNext is part of the background, not the whole identity.
+ * Tools still being learned (TypeScript, React, Tailwind, Vitest, Playwright)
+ * are labelled "Currently learning", never as proven experience.
  */
 export type Pending<T> = T | null;
 
@@ -8,27 +11,26 @@ export const site = {
   name: "Almarie Bullo",
   initials: "AB",
   photo: "/almarie.jpg",
-  roles: ["Web Developer"],
-  headlineLead: "Web developer.",
-  headlineAccent: "I build reliable web applications for real business workflows.",
+  roles: ["Web Developer", "Product Owner", "Quality Assurance"],
+  headlineLead: "Building better digital solutions.",
+  headlineAccent: "Web development · Product ownership · Quality assurance",
   company: "Livro Systems, Inc.",
   formerCompany: "Wela School Systems",
   intro:
-    "Web developer with 6+years of experience building business web applications: enrollment, billing, payments, and approval workflows. Python, JavaScript, SQL, and React with TypeScript and Tailwind CSS.",
+    "I'm an IT professional with 6+ years of web development experience, passionate about solving problems, improving workflows, and building useful digital solutions. I bring a strong technical foundation, a curious mindset, and a willingness to learn new technologies and explore new opportunities.",
   availability:
-    "Open to web developer and software developer roles · Remote or hybrid · UTC+8",
+    "Open to Web Developer, Product Owner, and Quality Assurance roles · Remote or hybrid · UTC+8",
   email: "almariebullo@gmail.com",
   linkedin: "https://www.linkedin.com/in/almarie-alim-bullo/",
   github: "https://github.com/almariebu",
-  resume: "/cv.html",
-  resumeDeveloper: "/cv-developer.html",
+  resume: "/cv-developer.html",
   url: "https://portfolio-almariebu.vercel.app",
 };
 
 export const screenshotNote =
   "This screenshot is not the actual system. It is for visualization only.";
 
-export type DisciplineId = "frontend" | "backend" | "workflows" | "practice";
+export type DisciplineId = "web" | "product" | "quality" | "learning";
 
 export const disciplines: {
   id: DisciplineId;
@@ -38,56 +40,68 @@ export const disciplines: {
   capabilities: string[];
 }[] = [
   {
-    id: "frontend",
-    label: "Frontend",
-    title: "Interfaces people can use",
+    id: "web",
+    label: "Web development",
+    title: "My core foundation",
     description:
-      "Responsive, accessible interfaces with HTML5, CSS, JavaScript, React, TypeScript, and Tailwind CSS. Reusable components, clean layouts, and attention to detail. See the UI kit demo.",
-    capabilities: [
-      "HTML5",
-      "CSS",
-      "JavaScript",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Responsive layouts",
-    ],
-  },
-  {
-    id: "backend",
-    label: "Backend and data",
-    title: "Services and databases",
-    description:
-      "Python services, SQL databases (MariaDB), permissions, background jobs, and integrations with payment and messaging providers.",
+      "6+ years building and maintaining business web applications: forms, approval workflows, billing and payment logic, reports, integrations, and data migration. Most of it on Frappe and ERPNext.",
     capabilities: [
       "Python",
+      "JavaScript",
+      "HTML",
+      "CSS",
       "SQL",
       "MariaDB",
       "REST APIs",
-      "Background jobs",
-      "Permissions",
+      "Frappe",
+      "ERPNext",
+      "Git",
     ],
   },
   {
-    id: "workflows",
-    label: "Business workflows",
-    title: "From messy problem to daily tool",
+    id: "product",
+    label: "Product & process",
+    title: "From business need to delivered feature",
     description:
-      "Multi-step approvals, validation rules, billing and payment logic, reports, and data migration. I work from a messy real-world problem to something staff can use daily.",
-    capabilities: ["Approvals", "Validation", "Billing", "Reports", "Migration"],
+      "As Product Owner since January 2026, I turn school enrollment, billing, and payment processes into clear, deliverable tickets and work with the development team to ship them. Years of building those workflows taught me how the business runs.",
+    capabilities: [
+      "Requirements analysis",
+      "Workflow analysis",
+      "Ticket writing",
+      "Stakeholder coordination",
+      "Feature delivery",
+    ],
   },
   {
-    id: "practice",
-    label: "How I work",
-    title: "Careful and clear",
+    id: "quality",
+    label: "Quality assurance",
+    title: "Finding and fixing what breaks",
     description:
-      "Git and GitHub, careful debugging, clear written communication, and testing what I build.",
-    capabilities: ["Git", "GitHub", "Debugging", "Testing"],
+      "Debugging and fixing issues on live production systems, validation rules that stop bad data, and unit tests for business logic. Test plans and automated testing are what I am building on now.",
+    capabilities: [
+      "Debugging",
+      "Production fixes",
+      "Validation rules",
+      "Unit tests",
+      "Test plans",
+    ],
+  },
+  {
+    id: "learning",
+    label: "Currently learning",
+    title: "Growing beyond one stack",
+    description:
+      "I like learning new tools. Right now I am working through TypeScript, React, Tailwind CSS, and test automation with Vitest and Playwright, using them on the projects in this portfolio.",
+    capabilities: ["TypeScript", "React", "Tailwind CSS", "Vitest", "Playwright"],
   },
 ];
 
+/** The role areas a project shows evidence for. */
+export type Area = "Web Development" | "Product & Process" | "Quality Assurance";
+
 export type Project = {
   title: string;
+  areas: Area[];
   problem: string;
   built: string[];
   result: string;
@@ -101,6 +115,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "Frappe contract tracker",
+    areas: ["Web Development", "Product & Process", "Quality Assurance"],
     problem:
       "A freelancer needs to know which quotes are approved, what has been paid, and who still owes money.",
     built: [
@@ -116,6 +131,7 @@ export const projects: Project[] = [
   },
   {
     title: "UI component kit",
+    areas: ["Web Development", "Quality Assurance"],
     problem:
       "Teams that build business forms and tables need components that are consistent, keyboard accessible, and tested.",
     built: [
@@ -136,6 +152,7 @@ export const projects: Project[] = [
 
 export type CaseStudy = {
   slug: string;
+  areas: Area[];
   title: string;
   category: string;
   summary: string;
@@ -157,6 +174,7 @@ const schoolDemo = (anchor: string) => `https://github.com/almariebu/school_demo
 export const caseStudies: CaseStudy[] = [
   {
     slug: "college-enrollment",
+    areas: ["Web Development", "Product & Process"],
     title: "College admission and enrollment",
     category: "Enrollment",
     summary:
@@ -180,6 +198,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "account-closing",
+    areas: ["Web Development", "Quality Assurance"],
     title: "Account closing and cashiering",
     category: "Billing",
     summary:
@@ -203,6 +222,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "student-discounts",
+    areas: ["Web Development", "Product & Process"],
     title: "Student discounts",
     category: "Billing",
     summary:
@@ -225,6 +245,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "erp-livro",
+    areas: ["Product & Process", "Web Development"],
     title: "ERP Livro: employee lifecycle and access",
     category: "Internal ERP",
     summary:
@@ -241,6 +262,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "basic-ed-enrollment",
+    areas: ["Web Development", "Quality Assurance"],
     title: "Basic education enrollment",
     category: "Enrollment",
     summary:
@@ -264,6 +286,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "roles-and-migration",
+    areas: ["Web Development"],
     title: "Roles and data migration",
     category: "Data",
     summary:
@@ -286,6 +309,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "online-payments",
+    areas: ["Web Development"],
     title: "Online payments",
     category: "Billing",
     summary:
@@ -306,6 +330,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "grading",
+    areas: ["Web Development", "Quality Assurance"],
     title: "Grading",
     category: "Grading",
     summary:
@@ -325,6 +350,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "sms-and-email",
+    areas: ["Web Development"],
     title: "SMS and email notifications",
     category: "Messaging",
     summary:
@@ -383,28 +409,31 @@ export const experience: {
 
 export const about = {
   eyebrow: "About",
-  title: "Web developer since 2020",
+  title: "IT professional, web developer since 2020",
   paragraphs: [
-    "I'm a web developer with 6+years of experience building and maintaining business applications for schools: enrollment, billing, payments, grading, and internal workflows. Most of that work was on the Frappe framework with Python, JavaScript, and SQL.",
-    "I'm now the Product Owner in Product Development at Livro Systems, Inc., formerly Wela School Systems, where I started as a web developer in March 2020.",
-    "I enjoy turning unclear requirements into software that people can rely on, and I care about clean code, small details, and clear communication.",
+    "I'm an IT professional with over six years of web development experience, building and maintaining business applications that support real school operations: enrollment, billing, payments, approvals, grading, and data migration. Most of that work was on the Frappe framework and ERPNext, with Python, JavaScript, and SQL.",
+    "I started as a Junior Web Developer at Wela School Systems in March 2020, grew to Senior Web Developer, and have been the Product Owner in Product Development at Livro Systems, Inc. (formerly Wela) since January 2026. That path gave me experience in development, troubleshooting live systems, and turning business needs into delivered features.",
+    "My foundation is web development, but I'm not limiting myself to one framework. I'm learning new tools and growing into product ownership and software quality assurance.",
+    "I'm open to Web Developer, Product Owner, or Quality Assurance roles. I value collaboration, continuous learning, clear communication, and building software that makes work easier for people.",
   ],
   facts: [
     { label: "Experience", value: "Since March 2020" },
     { label: "Company", value: "Livro Systems, Inc. (formerly Wela)" },
     { label: "Now", value: "Product Owner, full-time" },
-    { label: "Frontend", value: "HTML5, CSS, JavaScript, React, TypeScript, Tailwind CSS" },
-    { label: "Backend", value: "Python, SQL, MariaDB, REST APIs, background jobs" },
-    { label: "Tools", value: "Git, GitHub, Linux, Vitest, Playwright" },
-    { label: "Also", value: "Frappe framework" },
-    { label: "Hours", value: "Remote or hybrid, UTC+8" },
+    { label: "Development", value: "Python, JavaScript, HTML, CSS, SQL" },
+    { label: "Data and APIs", value: "MariaDB, REST APIs, payment and SMS integrations" },
+    { label: "Frameworks and tools", value: "Frappe, ERPNext, Git, GitHub, Linux" },
+    { label: "Product and process", value: "Requirements and workflow analysis, ticket writing, delivery with developers" },
+    { label: "Quality", value: "Debugging, production fixes, unit tests, test plans" },
+    { label: "Currently learning", value: "TypeScript, React, Tailwind CSS, Vitest, Playwright" },
+    { label: "Open to", value: "Web Developer, Product Owner, and QA roles · Remote or hybrid, UTC+8" },
   ],
 };
 
 export const contact = {
   eyebrow: "Contact",
   title: "Let's work together",
-  lead: "I'm open to web developer and software developer roles, remote or hybrid. Send me a message. The button opens an email draft. The address below works if you prefer to write directly.",
+  lead: "I'm open to Web Developer, Product Owner, and Quality Assurance roles, remote or hybrid. Send me a message. The button opens an email draft. The address below works if you prefer to write directly.",
   responseTime: "I usually reply within a few days.",
   projectTypes: [
     "Job opportunity",

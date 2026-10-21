@@ -1,6 +1,6 @@
-# Almarie Bullo — Web Developer
+# Almarie Bullo — Web Development · Product Ownership · Quality Assurance
 
-Personal portfolio for web and software development work. Live at [almariedev.com](https://almariedev.com/).
+Personal portfolio and CVs: an IT professional with 6+ years of web development experience, open to Web Developer, Product Owner, and Quality Assurance roles. Live at [almariedev.com](https://almariedev.com/).
 
 ## Stack
 

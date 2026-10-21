@@ -21,7 +21,7 @@ export function PracticePanel() {
 
       <PanelHeading
         eyebrow="What I do"
-        title="Web applications, from the interface to the database"
+        title="Web development, product, and quality"
       />
 
       <div className="grid gap-3">

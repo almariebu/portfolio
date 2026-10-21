@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { caseStudies, projects, screenshotNote, type CaseStudy, type Project } from "@/lib/content";
+import {
+  caseStudies,
+  projects,
+  screenshotNote,
+  type Area,
+  type CaseStudy,
+  type Project,
+} from "@/lib/content";
 
 export function WorkPanel({
   slug,
@@ -19,10 +26,10 @@ export function WorkPanel({
       <div className="max-w-3xl">
         <p className="text-xs font-semibold tracking-[0.16em] text-gold uppercase">Projects</p>
         <h2 className="mt-2 font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
-          Professional work: Frappe / ERPNext business systems (2020 to present)
+          Selected work: web development, product, and quality
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-night-ink">
-          A school management platform and ERP Livro, built on Frappe and ERPNext and used by registrars, cashiers, finance staff, deans, teachers, and employees. Screenshots are illustrative, not the real system.
+          Professional work since 2020 on a school management platform and ERP Livro, built on Frappe and ERPNext, plus personal projects. Each card is labelled with the areas it shows: Web Development, Product &amp; Process, or Quality Assurance. Screenshots are illustrative, not the real system.
         </p>
       </div>
 
@@ -72,7 +79,7 @@ export function WorkPanel({
       <div className="flex flex-col gap-4">
         <div className="max-w-3xl">
           <h2 className="font-display text-[clamp(1.35rem,2vw,1.85rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-night-ink">
-            Other projects: Frappe, React, TypeScript, Tailwind CSS
+            Personal projects
           </h2>
         </div>
         {projects.map((project) => (
@@ -102,6 +109,7 @@ function ProjectArticle({ project }: { project: Project }) {
         <h3 className="font-display text-xl font-semibold leading-snug tracking-tight text-night-ink">
           {project.title}
         </h3>
+        <AreaTags areas={project.areas} />
         <section>
           <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Problem</h4>
           <p className="mt-2 text-sm leading-relaxed text-night-ink">{project.problem}</p>
@@ -194,9 +202,25 @@ function StudyImage({ study }: { study: CaseStudy }) {
   );
 }
 
+function AreaTags({ areas }: { areas: Area[] }) {
+  return (
+    <ul aria-label="Areas this project shows" className="flex flex-wrap gap-1.5">
+      {areas.map((area) => (
+        <li
+          key={area}
+          className="rounded-full bg-gold/12 px-2.5 py-0.5 text-xs font-semibold text-gold-bright"
+        >
+          {area}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function StudyBody({ study }: { study: CaseStudy }) {
   return (
     <div className="space-y-4">
+      <AreaTags areas={study.areas} />
       <section>
         <h4 className="text-xs font-semibold tracking-[0.14em] text-gold uppercase">Problem</h4>
         <p className="mt-2 text-sm leading-relaxed text-night-ink">{study.problem}</p>
