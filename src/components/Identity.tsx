@@ -106,20 +106,20 @@ export function Identity({
             GitHub
           </a>
           <a
-            href={site.resume}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="text-ink-muted transition hover:text-ink"
-          >
-            CV (ERP)
-          </a>
-          <a
             href={site.resumeDeveloper}
             target="_blank"
             rel="noreferrer noopener"
             className="text-ink-muted transition hover:text-ink"
           >
-            Developer CV
+            CV
+          </a>
+          <a
+            href={site.resume}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-ink-muted transition hover:text-ink"
+          >
+            Frappe / ERPNext CV
           </a>
         </div>
         <p className="mt-4 text-sm text-ink-muted">
